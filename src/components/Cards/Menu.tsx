@@ -7,7 +7,7 @@ export function ExpandableCardDemo() {
   const [active, setActive] = useState<(typeof foodCards)[number] | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
-  const [selectedVariety, setSelectedVariety] = useState<string | null>(null);
+  const [selectedVariety, setSelectedVariety] = useState<any>(null);
   const [orders, setOrders] = useState<any[]>([]);
   const [showCart, setShowCart] = useState(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -18,7 +18,7 @@ export function ExpandableCardDemo() {
   const cartRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("orders") || "[]");
+    const saved = JSON.parse(sessionStorage.getItem("orders") || "[]");
     setOrders(saved);
   }, []);
   
@@ -58,17 +58,22 @@ export function ExpandableCardDemo() {
   });
   
   const saveOrder = () => {
-    if (!active) return;
+    if (!active || !selectedVariety) return;
     const order = {
       title: active.title,
-      variety: selectedVariety,
+      variety: selectedVariety.name,
+      price: selectedVariety.price,
       quantity,
       timestamp: new Date().toISOString(),
     };
     const updated = [...orders, order];
     setOrders(updated);
-    localStorage.setItem("orders", JSON.stringify(updated));
+    sessionStorage.setItem("orders", JSON.stringify(updated));
     setActive(null);
+  };
+  
+  const getTotalPrice = () => {
+    return orders.reduce((total, order) => total + (order.price * order.quantity), 0);
   };
   
   return (
@@ -207,19 +212,33 @@ export function ExpandableCardDemo() {
                 
                 {active.varieties && (
                   <div className="flex gap-2 mb-4">
-                    {active.varieties.map((v) => (
+                    {active.varieties.map((v: any) => (
                       <button
-                        key={v}
+                        key={v.name}
                         onClick={() => setSelectedVariety(v)}
                         className={`px-3 py-1 rounded-full border ${
-                          selectedVariety === v
+                          selectedVariety?.name === v.name
                             ? "bg-green-500 text-white border-green-500"
                             : "border-neutral-300 text-neutral-700 dark:text-neutral-200"
                         }`}
                       >
-                        {v}
+                        {v.name}
                       </button>
                     ))}
+                  </div>
+                )}
+                
+                {/* Price Display */}
+                {selectedVariety && (
+                  <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                    <div className="flex justify-between items-center">
+                      <span className="text-neutral-700 dark:text-neutral-300 font-medium">
+                        Price ({selectedVariety.name})
+                      </span>
+                      <span className="text-2xl font-bold text-green-600 dark:text-green-400">
+                        ₹{selectedVariety.price}
+                      </span>
+                    </div>
                   </div>
                 )}
                 
@@ -378,61 +397,75 @@ export function ExpandableCardDemo() {
                   No items added yet.
                 </p>
               ) : (
-                <ul className="space-y-3">
-                  {orders.map((o, i) => (
-                    <li
-                      key={i}
-                      className="flex justify-between items-center border-b pb-2 dark:border-neutral-700"
-                    >
-                      <div>
-                        <p className="font-medium text-neutral-800 dark:text-neutral-200">
-                          {o.title}
-                        </p>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 text-left">
-                          {o.variety || "Default"}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => {
-                            const updated = [...orders];
-                            if (updated[i].quantity > 1) {
-                              updated[i].quantity -= 1;
-                            } else {
-                              updated.splice(i, 1);
-                            }
-                            setOrders(updated);
-                            localStorage.setItem(
-                              "orders",
-                              JSON.stringify(updated)
-                            );
-                          }}
-                          className="px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300"
-                        >
-                          -
-                        </button>
-                        <span className="w-6 text-center">{o.quantity}</span>
-                        <button
-                          onClick={() => {
-                            const updated = [...orders];
-                            updated[i].quantity += 1;
-                            setOrders(updated);
-                            localStorage.setItem(
-                              "orders",
-                              JSON.stringify(updated)
-                            );
-                          }}
-                          className="px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {orders.length > 0 && (
                 <>
+                  <ul className="space-y-3">
+                    {orders.map((o, i) => (
+                      <li
+                        key={i}
+                        className="flex justify-between items-center border-b pb-2 dark:border-neutral-700"
+                      >
+                        <div className="flex-1">
+                          <p className="font-medium text-lg text-neutral-800 dark:text-neutral-200 text-left">
+                            {o.title}
+                          </p>
+                          <p className="text-sm text-neutral-600 dark:text-neutral-400 text-left">
+                            {o.variety || "Default"}
+                          </p>
+                          <p className="text-sm font-semibold text-green-600 dark:text-green-400 text-left">
+                            ₹{o.price} × {o.quantity} = ₹{o.price * o.quantity}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => {
+                              const updated = [...orders];
+                              if (updated[i].quantity > 1) {
+                                updated[i].quantity -= 1;
+                              } else {
+                                updated.splice(i, 1);
+                              }
+                              setOrders(updated);
+                              sessionStorage.setItem(
+                                "orders",
+                                JSON.stringify(updated)
+                              );
+                            }}
+                            className="px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300"
+                          >
+                            -
+                          </button>
+                          <span className="w-6 text-center">{o.quantity}</span>
+                          <button
+                            onClick={() => {
+                              const updated = [...orders];
+                              updated[i].quantity += 1;
+                              setOrders(updated);
+                              sessionStorage.setItem(
+                                "orders",
+                                JSON.stringify(updated)
+                              );
+                            }}
+                            className="px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  {/* Total Price Section */}
+                  <div className="mt-4 pt-4 border-t-2 border-neutral-300 dark:border-neutral-700">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-lg font-bold text-neutral-800 dark:text-neutral-200">
+                        Total Amount
+                      </span>
+                      <span className="text-2xl font-bold text-green-600 dark:text-green-400">
+                        ₹{getTotalPrice()}
+                      </span>
+                    </div>
+                  </div>
+                  
                   <button
                     onClick={() => setShowCart(false)}
                     className="mt-3 w-full px-4 py-2 rounded-full bg-green-500 hover:bg-green-600 text-white font-bold"

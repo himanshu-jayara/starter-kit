@@ -13,7 +13,11 @@ export const foodCards = [
     title: "Butter Chicken",
     src: chickenbuttermasala,
     tags: ["non-veg", "lunch", "dinner"],
-    varieties: ["Quarter", "Half", "Full"],
+    varieties: [
+      { name: "Quarter", price: 250 },
+      { name: "Half", price: 450 },
+      { name: "Full", price: 850 }
+    ],
     nutrition: {
       servingSize: "100g",
       calories: 235,
@@ -38,7 +42,11 @@ export const foodCards = [
     title: "Chicken Changezi",
     src: ChickenChangezi,
     tags: ["non-veg", "lunch", "dinner"],
-    varieties: ["Quarter", "Half", "Full"],
+    varieties: [
+      { name: "Quarter", price: 270 },
+      { name: "Half", price: 480 },
+      { name: "Full", price: 900 }
+    ],
     nutrition: {
       servingSize: "100g",
       calories: 248,
@@ -63,7 +71,11 @@ export const foodCards = [
     title: "Chettinad Mutton Curry",
     src: ChettinadMuttonCurry,
     tags: ["non-veg", "lunch", "dinner"],
-    varieties: ["Quarter", "Half", "Full"],
+    varieties: [
+      { name: "Quarter", price: 320 },
+      { name: "Half", price: 580 },
+      { name: "Full", price: 1100 }
+    ],
     nutrition: {
       servingSize: "100g",
       calories: 285,
@@ -88,7 +100,11 @@ export const foodCards = [
     title: "Paneer Butter Masala",
     src: PaneerButterMasala,
     tags: ["veg", "lunch", "dinner"],
-    varieties: ["Quarter", "Half", "Full"],
+    varieties: [
+      { name: "Quarter", price: 200 },
+      { name: "Half", price: 360 },
+      { name: "Full", price: 680 }
+    ],
     nutrition: {
       servingSize: "100g",
       calories: 265,
@@ -113,7 +129,11 @@ export const foodCards = [
     title: "Paneer Kali Mirch",
     src: PaneerKaliMirch,
     tags: ["veg", "lunch", "dinner"],
-    varieties: ["Quarter", "Half", "Full"],
+    varieties: [
+      { name: "Quarter", price: 210 },
+      { name: "Half", price: 380 },
+      { name: "Full", price: 720 }
+    ],
     nutrition: {
       servingSize: "100g",
       calories: 242,
@@ -138,7 +158,11 @@ export const foodCards = [
     title: "Chicken Kali Mirch",
     src: ChickenKaliMirch,
     tags: ["non-veg", "lunch", "dinner"],
-    varieties: ["Quarter", "Half", "Full"],
+    varieties: [
+      { name: "Quarter", price: 260 },
+      { name: "Half", price: 470 },
+      { name: "Full", price: 880 }
+    ],
     nutrition: {
       servingSize: "100g",
       calories: 228,
@@ -164,7 +188,11 @@ export const foodCards = [
     title: "Butter Naan",
     src: ButterNaan,
     tags: ["veg", "bread", "lunch", "dinner"],
-    varieties: ["Quarter", "Half", "Full"],
+    varieties: [
+      { name: "Quarter", price: 40 },
+      { name: "Half", price: 70 },
+      { name: "Full", price: 120 }
+    ],
     nutrition: {
       servingSize: "1 piece (90g)",
       calories: 262,
@@ -189,6 +217,11 @@ export const foodCards = [
     title: "Rumali Roti & Tawa Roti Combo",
     src: "https://images.unsplash.com/photo-1593355799195-2f9b8c0c9e6c?q=80&w=800",
     tags: ["veg", "bread", "lunch", "dinner"],
+    varieties: [
+      { name: "Quarter", price: 30 },
+      { name: "Half", price: 50 },
+      { name: "Full", price: 90 }
+    ],
     nutrition: {
       servingSize: "1 piece (50g)",
       calories: 120,
@@ -212,6 +245,11 @@ export const foodCards = [
     title: "Vegetable Raita",
     src: "https://images.unsplash.com/photo-1512485694200-a07817e88f4c?q=80&w=800",
     tags: ["veg", "side", "lunch", "dinner"],
+    varieties: [
+      { name: "Quarter", price: 50 },
+      { name: "Half", price: 80 },
+      { name: "Full", price: 140 }
+    ],
     nutrition: {
       servingSize: "100g",
       calories: 68,
@@ -236,6 +274,11 @@ export const foodCards = [
     title: "Kachumber Salad & Achar (Pickles)",
     src: "https://images.unsplash.com/photo-1596660447306-0b3f8a4f8f74?q=80&w=800",
     tags: ["veg", "side", "lunch", "dinner"],
+    varieties: [
+      { name: "Quarter", price: 40 },
+      { name: "Half", price: 60 },
+      { name: "Full", price: 100 }
+    ],
     nutrition: {
       servingSize: "100g",
       calories: 42,
