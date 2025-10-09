@@ -39,10 +39,10 @@ export function MainNavbar() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
+            <NavbarButton variant="primary">Book a call</NavbarButton>
             <DarkModeSwitch/>
           </div>
-        </NavBody>mode
+        </NavBody>
 
         {/* Mobile Navigation */}
         <MobileNav>
@@ -68,14 +68,7 @@ export function MainNavbar() {
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
+               <DarkModeSwitch/>
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
@@ -83,7 +76,6 @@ export function MainNavbar() {
               >
                 Book a call
               </NavbarButton>
-            </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
