@@ -8,7 +8,7 @@ function App() {
   return (
       <BrowserRouter>
       <MainNavbar />
-      <main style={{ padding: 20 }}>
+      <main >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />

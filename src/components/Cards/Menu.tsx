@@ -100,7 +100,7 @@ export function ExpandableCardDemo() {
 );
 
   return (
-    <div className="mx-4 relative">
+    <div className="relative">
       {/* Search Bar */}
       <div className="max-w-2xl mx-auto w-full px-4 pt-4 pb-2">
         <div className="relative">
@@ -391,7 +391,7 @@ export function ExpandableCardDemo() {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           onClick={() => setShowCart(true)}
-          className="fixed bottom-6 right-6 bg-green-500 text-white px-5 py-3 rounded-full shadow-lg cursor-pointer flex items-center gap-2 z-[200]"
+          className="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg cursor-pointer flex items-center gap-2 z-[200]"
         >
           <span className="font-semibold">View Order</span>
           <span className="bg-white text-green-600 font-bold rounded-full px-2 py-1 text-sm">
