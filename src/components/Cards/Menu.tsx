@@ -10,6 +10,7 @@ export function ExpandableCardDemo() {
   const [selectedVariety, setSelectedVariety] = useState<string | null>(null);
   const [orders, setOrders] = useState<any[]>([]);
   const [showCart, setShowCart] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const id = useId();
 
   // 🟩 Separate refs
@@ -51,9 +52,16 @@ export function ExpandableCardDemo() {
   useOutsideClick(cartRef, () => setShowCart(false));
 
   const tags = Object.keys(tagImages);
-  const filteredFoodCards = selectedTag
-    ? foodCards.filter((card: any) => card.tags.includes(selectedTag))
-    : foodCards;
+  
+  // Filter by both tag and search query
+  const filteredFoodCards = foodCards.filter((card: any) => {
+    const matchesTag = selectedTag ? card.tags.includes(selectedTag) : true;
+    const matchesSearch = searchQuery
+      ? card.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        card.description.toLowerCase().includes(searchQuery.toLowerCase())
+      : true;
+    return matchesTag && matchesSearch;
+  });
 
   // 🧺 Save Order
   const saveOrder = () => {
@@ -72,9 +80,45 @@ export function ExpandableCardDemo() {
 
   return (
     <div className="mx-4 relative">
-      {/* Tag Circles */}
-      <div className="w-[80vw] overflow-x-auto py-8">
-        <div className="flex gap-4 px-4 flex-nowrap">
+      {/* Search Bar */}
+      <div className="max-w-2xl mx-auto w-full px-4 pt-4 pb-2">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search for dishes..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-4 py-3 pl-12 rounded-full border-2 border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:border-green-500 transition-colors"
+          />
+          <svg
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+
+       {/* Tag Circles */}
+      <div className="w-[90vw] overflow-x-auto py-2">
+        <div className="flex gap-4 px-4 flex-nowrap justify-center min-w-max">
           {tags.map((tag) => (
             <motion.div
               key={tag}
@@ -102,44 +146,50 @@ export function ExpandableCardDemo() {
       </div>
 
       {/* Food Cards */}
-      <ul className="max-w-2xl mx-auto w-full gap-4">
-        {filteredFoodCards.map((card: any) => (
-          <motion.div
-            layoutId={`card-${card.title}-${id}`}
-            key={`card-${card.title}-${id}`}
-            onClick={() => setActive(card)}
-            className="p-4 flex flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
-          >
-            <div className="flex gap-4">
-              <motion.div layoutId={`image-${card.title}-${id}`}>
-                <img
-                  width={100}
-                  height={100}
-                  src={card.src}
-                  alt={card.title}
-                  className="h-40 w-40 rounded-lg object-cover"
-                />
-              </motion.div>
-              <div>
-                <motion.h3
-                  layoutId={`title-${card.title}-${id}`}
-                  className="font-medium text-neutral-800 dark:text-neutral-200"
-                >
-                  {card.title}
-                </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-neutral-600 dark:text-neutral-400"
-                >
-                  {card.description}
-                </motion.p>
-                <motion.button className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-white text-black mt-4">
-                  Order Now
-                </motion.button>
+      <ul className="max-w-2xl mx-auto w-full gap-4 grid grid-cols-1 sm:grid-cols-2 py-8">
+        {filteredFoodCards.length > 0 ? (
+          filteredFoodCards.map((card: any) => (
+            <motion.div
+              layoutId={`card-${card.title}-${id}`}
+              key={`card-${card.title}-${id}`}
+              onClick={() => setActive(card)}
+              className="p-4 flex flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
+            >
+              <div className="flex gap-4">
+                <motion.div layoutId={`image-${card.title}-${id}`}>
+                  <img
+                    width={100}
+                    height={100}
+                    src={card.src}
+                    alt={card.title}
+                    className="h-40 w-40 rounded-lg object-cover"
+                  />
+                </motion.div>
+                <div>
+                  <motion.h3
+                    layoutId={`title-${card.title}-${id}`}
+                    className="font-medium text-neutral-800 dark:text-neutral-200"
+                  >
+                    {card.title}
+                  </motion.h3>
+                  <motion.p
+                    layoutId={`description-${card.description}-${id}`}
+                    className="text-neutral-600 dark:text-neutral-400"
+                  >
+                    {card.description}
+                  </motion.p>
+                  <motion.button className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-white text-black mt-4">
+                    Order Now
+                  </motion.button>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))
+        ) : (
+          <div className="col-span-full text-center py-12 text-neutral-600 dark:text-neutral-400">
+            No dishes found matching your search.
+          </div>
+        )}
       </ul>
 
       {/* 🍽️ Modal (Food Detail) */}
@@ -202,7 +252,7 @@ export function ExpandableCardDemo() {
                 >
                   Add Order
                 </button>
-                    <div className="pt-4 relative px-4">
+                <div className="pt-4 relative px-4">
                   <motion.div
                     layout
                     className="text-neutral-600 text-md md:text-md lg:text-md  pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
@@ -233,97 +283,102 @@ export function ExpandableCardDemo() {
         </motion.div>
       )}
 
-  {/* 🪄 Cart Modal */}
-<AnimatePresence>
-  {showCart && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/30 flex justify-center items-center z-[300]"
-    >
-      <motion.div
-        ref={cartRef}
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-white dark:bg-neutral-900 rounded-3xl p-6 w-[90%] max-w-md max-h-[80vh] overflow-auto"
-      >
-        <h2 className="text-xl font-bold mb-4 text-neutral-800 dark:text-neutral-200">
-          Your Orders
-        </h2>
-
-        {orders.length === 0 ? (
-          <p className="text-neutral-600 dark:text-neutral-400">
-            No items added yet.
-          </p>
-        ) : (
-          <ul className="space-y-3">
-            {orders.map((o, i) => (
-              <li
-                key={i}
-                className="flex justify-between items-center border-b pb-2 dark:border-neutral-700"
-              >
-                <div>
-                  <p className="font-medium text-neutral-800 dark:text-neutral-200">
-                    {o.title}
-                  </p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 text-left">
-                    {o.variety || "Default"}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => {
-                      const updated = [...orders];
-                      if (updated[i].quantity > 1) {
-                        updated[i].quantity -= 1;
-                      } else {
-                        updated.splice(i, 1);
-                      }
-                      setOrders(updated);
-                      localStorage.setItem("orders", JSON.stringify(updated));
-                    }}
-                    className="px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300"
-                  >
-                    -
-                  </button>
-
-                  <span className="w-6 text-center">{o.quantity}</span>
-
-                  <button
-                    onClick={() => {
-                      const updated = [...orders];
-                      updated[i].quantity += 1;
-                      setOrders(updated);
-                      localStorage.setItem("orders", JSON.stringify(updated));
-                    }}
-                    className="px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300"
-                  >
-                    +
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {orders.length > 0 && (
-          <>
-            <button
-              onClick={() => setShowCart(false)}
-              className="mt-3 w-full px-4 py-2 rounded-full bg-green-500 hover:bg-green-600 text-white font-bold"
+      {/* 🪄 Cart Modal */}
+      <AnimatePresence>
+        {showCart && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/30 flex justify-center items-center z-[300]"
+          >
+            <motion.div
+              ref={cartRef}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white dark:bg-neutral-900 rounded-3xl p-6 w-[90%] max-w-md max-h-[80vh] overflow-auto"
             >
-              Close
-            </button>
-          </>
-        )}
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
+              <h2 className="text-xl font-bold mb-4 text-neutral-800 dark:text-neutral-200">
+                Your Orders
+              </h2>
 
+              {orders.length === 0 ? (
+                <p className="text-neutral-600 dark:text-neutral-400">
+                  No items added yet.
+                </p>
+              ) : (
+                <ul className="space-y-3">
+                  {orders.map((o, i) => (
+                    <li
+                      key={i}
+                      className="flex justify-between items-center border-b pb-2 dark:border-neutral-700"
+                    >
+                      <div>
+                        <p className="font-medium text-neutral-800 dark:text-neutral-200">
+                          {o.title}
+                        </p>
+                        <p className="text-sm text-neutral-600 dark:text-neutral-400 text-left">
+                          {o.variety || "Default"}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            const updated = [...orders];
+                            if (updated[i].quantity > 1) {
+                              updated[i].quantity -= 1;
+                            } else {
+                              updated.splice(i, 1);
+                            }
+                            setOrders(updated);
+                            localStorage.setItem(
+                              "orders",
+                              JSON.stringify(updated)
+                            );
+                          }}
+                          className="px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300"
+                        >
+                          -
+                        </button>
+
+                        <span className="w-6 text-center">{o.quantity}</span>
+
+                        <button
+                          onClick={() => {
+                            const updated = [...orders];
+                            updated[i].quantity += 1;
+                            setOrders(updated);
+                            localStorage.setItem(
+                              "orders",
+                              JSON.stringify(updated)
+                            );
+                          }}
+                          className="px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {orders.length > 0 && (
+                <>
+                  <button
+                    onClick={() => setShowCart(false)}
+                    className="mt-3 w-full px-4 py-2 rounded-full bg-green-500 hover:bg-green-600 text-white font-bold"
+                  >
+                    Close
+                  </button>
+                </>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

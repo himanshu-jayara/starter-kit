@@ -2,7 +2,6 @@
 import {
   Navbar,
   NavBody,
-  NavItems,
   MobileNav,
   NavbarLogo,
   NavbarButton,
@@ -11,25 +10,23 @@ import {
   MobileNavMenu,
 } from "../components/ui/resizable-navbar";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DarkModeSwitch from "./ThemeToggle";
 
 export function MainNavbar() {
+  const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const navItems = [
-    {
-      name: "Features",
-      link: "#features",
-    },
-    {
-      name: "Pricing",
-      link: "#pricing",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
+    { name: "Home", path: "/" },
+    { name: "Menu", path: "/menu" },
+    { name: "About Us", path: "/about" },
   ];
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <div className="relative w-full">
@@ -37,10 +34,26 @@ export function MainNavbar() {
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
-          <NavItems items={navItems} />
+          <div className="flex items-center gap-6">
+            {navItems.map((item) => (
+              <button
+                key={item.path}
+                onClick={() => handleNavigate(item.path)}
+                className="text-neutral-700 dark:text-neutral-200 hover:text-blue-500 transition-colors"
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+
           <div className="flex items-center gap-4">
-            <NavbarButton variant="primary">Book a call</NavbarButton>
-            <DarkModeSwitch/>
+            <NavbarButton
+              variant="primary"
+              onClick={() => handleNavigate("/menu")}
+            >
+              View Menu
+            </NavbarButton>
+            <DarkModeSwitch />
           </div>
         </NavBody>
 
@@ -58,31 +71,28 @@ export function MainNavbar() {
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
           >
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+            {navItems.map((item) => (
+              <button
+                key={item.path}
+                onClick={() => handleNavigate(item.path)}
+                className="relative text-neutral-600 dark:text-neutral-300 text-left"
               >
-                <span className="block">{item.name}</span>
-              </a>
+                {item.name}
+              </button>
             ))}
-               <DarkModeSwitch/>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
-              </NavbarButton>
+
+            <DarkModeSwitch />
+
+            <NavbarButton
+              onClick={() => handleNavigate("/menu")}
+              variant="primary"
+              className="w-full"
+            >
+              View Menu
+            </NavbarButton>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
-
-      {/* Navbar */}
     </div>
   );
 }
-
-
