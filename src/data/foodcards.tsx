@@ -1,5 +1,4 @@
 // src/data/foodCards.ts
-
 import chickenbuttermasala from '../assets/chickenbuttermasala.jpg'
 import ChickenChangezi from '../assets/ChickenChangezi.jpg'
 import ChettinadMuttonCurry from '../assets/ChettinadMuttonCurry.png'
@@ -11,10 +10,19 @@ import ButterNaan from '../assets/ButterNaan.jpg'
 export const foodCards = [
   {
     description: "North Indian Classic",
-    title: "Butter Chicken ",
+    title: "Butter Chicken",
     src: chickenbuttermasala,
     tags: ["non-veg", "lunch", "dinner"],
     varieties: ["Quarter", "Half", "Full"],
+    nutrition: {
+      servingSize: "100g",
+      calories: 235,
+      protein: 14.2,
+      carbs: 8.5,
+      fat: 16.8,
+      fiber: 1.2,
+      sodium: 420
+    },
     content: () => (
       <p>
         **Butter Chicken**, or **Murgh Makhani**, is a quintessential Indian
@@ -31,6 +39,15 @@ export const foodCards = [
     src: ChickenChangezi,
     tags: ["non-veg", "lunch", "dinner"],
     varieties: ["Quarter", "Half", "Full"],
+    nutrition: {
+      servingSize: "100g",
+      calories: 248,
+      protein: 16.5,
+      carbs: 9.2,
+      fat: 17.3,
+      fiber: 1.5,
+      sodium: 465
+    },
     content: () => (
       <p>
         **Chicken Changezi** is a rich, robust North Indian curry, said to be
@@ -47,6 +64,15 @@ export const foodCards = [
     src: ChettinadMuttonCurry,
     tags: ["non-veg", "lunch", "dinner"],
     varieties: ["Quarter", "Half", "Full"],
+    nutrition: {
+      servingSize: "100g",
+      calories: 285,
+      protein: 18.6,
+      carbs: 6.8,
+      fat: 21.4,
+      fiber: 2.1,
+      sodium: 510
+    },
     content: () => (
       <p>
         Hailing from the Chettinad region of Tamil Nadu, this **Mutton Curry**
@@ -63,6 +89,15 @@ export const foodCards = [
     src: PaneerButterMasala,
     tags: ["veg", "lunch", "dinner"],
     varieties: ["Quarter", "Half", "Full"],
+    nutrition: {
+      servingSize: "100g",
+      calories: 265,
+      protein: 12.8,
+      carbs: 10.2,
+      fat: 19.5,
+      fiber: 1.8,
+      sodium: 385
+    },
     content: () => (
       <p>
         The vegetarian counterpart to Butter Chicken, **Paneer Butter Masala**
@@ -79,6 +114,15 @@ export const foodCards = [
     src: PaneerKaliMirch,
     tags: ["veg", "lunch", "dinner"],
     varieties: ["Quarter", "Half", "Full"],
+    nutrition: {
+      servingSize: "100g",
+      calories: 242,
+      protein: 13.5,
+      carbs: 8.6,
+      fat: 17.8,
+      fiber: 1.2,
+      sodium: 395
+    },
     content: () => (
       <p>
         **Paneer Kali Mirch** translates to Paneer with Black Pepper. This
@@ -95,6 +139,15 @@ export const foodCards = [
     src: ChickenKaliMirch,
     tags: ["non-veg", "lunch", "dinner"],
     varieties: ["Quarter", "Half", "Full"],
+    nutrition: {
+      servingSize: "100g",
+      calories: 228,
+      protein: 15.8,
+      carbs: 7.4,
+      fat: 16.2,
+      fiber: 0.9,
+      sodium: 425
+    },
     content: () => (
       <p>
         Like its vegetarian sibling, **Chicken Kali Mirch** highlights the
@@ -112,6 +165,15 @@ export const foodCards = [
     src: ButterNaan,
     tags: ["veg", "bread", "lunch", "dinner"],
     varieties: ["Quarter", "Half", "Full"],
+    nutrition: {
+      servingSize: "1 piece (90g)",
+      calories: 262,
+      protein: 7.2,
+      carbs: 43.5,
+      fat: 7.8,
+      fiber: 2.1,
+      sodium: 425
+    },
     content: () => (
       <p>
         **Butter Naan** is a classic Indian flatbread, traditionally baked in a
@@ -127,6 +189,15 @@ export const foodCards = [
     title: "Rumali Roti & Tawa Roti Combo",
     src: "https://images.unsplash.com/photo-1593355799195-2f9b8c0c9e6c?q=80&w=800",
     tags: ["veg", "bread", "lunch", "dinner"],
+    nutrition: {
+      servingSize: "1 piece (50g)",
+      calories: 120,
+      protein: 3.8,
+      carbs: 24.2,
+      fat: 1.5,
+      fiber: 2.8,
+      sodium: 185
+    },
     content: () => (
       <p>
         Enjoy two styles of Indian bread: **Rumali Roti**, an extremely thin,
@@ -141,6 +212,15 @@ export const foodCards = [
     title: "Vegetable Raita",
     src: "https://images.unsplash.com/photo-1512485694200-a07817e88f4c?q=80&w=800",
     tags: ["veg", "side", "lunch", "dinner"],
+    nutrition: {
+      servingSize: "100g",
+      calories: 68,
+      protein: 3.5,
+      carbs: 8.2,
+      fat: 2.8,
+      fiber: 0.8,
+      sodium: 245
+    },
     content: () => (
       <p>
         **Raita** is a cooling and creamy yogurt-based side dish. This version,
@@ -156,6 +236,15 @@ export const foodCards = [
     title: "Kachumber Salad & Achar (Pickles)",
     src: "https://images.unsplash.com/photo-1596660447306-0b3f8a4f8f74?q=80&w=800",
     tags: ["veg", "side", "lunch", "dinner"],
+    nutrition: {
+      servingSize: "100g",
+      calories: 42,
+      protein: 1.8,
+      carbs: 9.5,
+      fat: 0.4,
+      fiber: 2.6,
+      sodium: 520
+    },
     content: () => (
       <p>
         Complete your Indian feast with essential accompaniments! The **Kachumber Salad**
@@ -167,8 +256,6 @@ export const foodCards = [
     ),
   },
 ]
-
-
 
 export const tagImages: Record<string, string> = {
   "veg": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",

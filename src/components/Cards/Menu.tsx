@@ -11,27 +11,25 @@ export function ExpandableCardDemo() {
   const [orders, setOrders] = useState<any[]>([]);
   const [showCart, setShowCart] = useState(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [activeTab, setActiveTab] = useState<"description" | "nutrition">("description");
   const id = useId();
-
-  // 🟩 Separate refs
+  
   const activeRef = useRef<HTMLDivElement>(null);
   const cartRef = useRef<HTMLDivElement>(null);
-
-  // 🧠 Load existing orders
+  
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("orders") || "[]");
     setOrders(saved);
   }, []);
-
-  // Reset quantity and variety when opening modal
+  
   useEffect(() => {
     if (active) {
       setQuantity(1);
       setSelectedVariety(active.varieties ? active.varieties[0] : null);
+      setActiveTab("description");
     }
   }, [active]);
-
-  // Handle Escape key and scroll locking
+  
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -39,21 +37,17 @@ export function ExpandableCardDemo() {
         setShowCart(false);
       }
     }
-
     if (active || showCart) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
-
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active, showCart]);
-
-  // 🟨 Use outside click for both modals
+  
   useOutsideClick(activeRef, () => setActive(null));
   useOutsideClick(cartRef, () => setShowCart(false));
-
+  
   const tags = Object.keys(tagImages);
   
-  // Filter by both tag and search query
   const filteredFoodCards = foodCards.filter((card: any) => {
     const matchesTag = selectedTag ? card.tags.includes(selectedTag) : true;
     const matchesSearch = searchQuery
@@ -62,8 +56,7 @@ export function ExpandableCardDemo() {
       : true;
     return matchesTag && matchesSearch;
   });
-
-  // 🧺 Save Order
+  
   const saveOrder = () => {
     if (!active) return;
     const order = {
@@ -77,7 +70,7 @@ export function ExpandableCardDemo() {
     localStorage.setItem("orders", JSON.stringify(updated));
     setActive(null);
   };
-
+  
   return (
     <div className="mx-4 relative">
       {/* Search Bar */}
@@ -115,8 +108,8 @@ export function ExpandableCardDemo() {
           )}
         </div>
       </div>
-
-       {/* Tag Circles */}
+      
+      {/* Tag Circles */}
       <div className="w-[90vw] overflow-x-auto py-2">
         <div className="flex gap-4 px-4 flex-nowrap justify-center min-w-max">
           {tags.map((tag) => (
@@ -144,7 +137,7 @@ export function ExpandableCardDemo() {
           ))}
         </div>
       </div>
-
+      
       {/* Food Cards */}
       <ul className="max-w-2xl mx-auto w-full gap-4 grid grid-cols-1 sm:grid-cols-2 py-8">
         {filteredFoodCards.length > 0 ? (
@@ -191,8 +184,8 @@ export function ExpandableCardDemo() {
           </div>
         )}
       </ul>
-
-      {/* 🍽️ Modal (Food Detail) */}
+      
+      {/* Modal (Food Detail) */}
       <AnimatePresence>
         {active && (
           <div className="fixed inset-0 grid place-items-center z-[100] overflow-auto p-4 bg-black/30">
@@ -208,10 +201,10 @@ export function ExpandableCardDemo() {
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold">{active.title}</h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-4 ">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4">
                   {active.description}
                 </p>
-
+                
                 {active.varieties && (
                   <div className="flex gap-2 mb-4">
                     {active.varieties.map((v) => (
@@ -229,7 +222,7 @@ export function ExpandableCardDemo() {
                     ))}
                   </div>
                 )}
-
+                
                 <div className="flex items-center gap-4 mb-4">
                   <button
                     className="px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-900"
@@ -245,30 +238,108 @@ export function ExpandableCardDemo() {
                     +
                   </button>
                 </div>
-
+                
                 <button
                   onClick={saveOrder}
-                  className="w-full px-4 py-2 rounded-full font-bold bg-green-500 text-white"
+                  className="w-full px-4 py-2 rounded-full font-bold bg-green-500 text-white mb-4"
                 >
                   Add Order
                 </button>
-                <div className="pt-4 relative px-4">
-                  <motion.div
-                    layout
-                    className="text-neutral-600 text-md md:text-md lg:text-md  pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+                
+                {/* Tabs */}
+                <div className="flex gap-2 mb-4 border-b border-neutral-200 dark:border-neutral-700">
+                  <button
+                    onClick={() => setActiveTab("description")}
+                    className={`px-4 py-2 font-medium transition-colors ${
+                      activeTab === "description"
+                        ? "text-green-500 border-b-2 border-green-500"
+                        : "text-neutral-600 dark:text-neutral-400"
+                    }`}
                   >
-                    {typeof active.content === "function"
-                      ? active.content()
-                      : active.content}
-                  </motion.div>
+                    Description
+                  </button>
+                  <button
+                    onClick={() => setActiveTab("nutrition")}
+                    className={`px-4 py-2 font-medium transition-colors ${
+                      activeTab === "nutrition"
+                        ? "text-green-500 border-b-2 border-green-500"
+                        : "text-neutral-600 dark:text-neutral-400"
+                    }`}
+                  >
+                    Nutrition
+                  </button>
+                </div>
+                
+                {/* Tab Content */}
+                <div className="relative px-4 max-h-64 overflow-auto">
+                  {activeTab === "description" ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="text-neutral-600 text-md dark:text-neutral-400 pb-4"
+                    >
+                      {typeof active.content === "function"
+                        ? active.content()
+                        : active.content}
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="pb-4"
+                    >
+                      {active.nutrition ? (
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b border-neutral-200 dark:border-neutral-700">
+                              <th className="text-left py-2 text-neutral-700 dark:text-neutral-300">Nutrient</th>
+                              <th className="text-right py-2 text-neutral-700 dark:text-neutral-300">Amount</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="border-b border-neutral-100 dark:border-neutral-800">
+                              <td className="py-2 text-neutral-600 dark:text-neutral-400">Serving Size</td>
+                              <td className="text-right py-2 font-medium text-neutral-800 dark:text-neutral-200">{active.nutrition.servingSize}</td>
+                            </tr>
+                            <tr className="border-b border-neutral-100 dark:border-neutral-800">
+                              <td className="py-2 text-neutral-600 dark:text-neutral-400">Calories</td>
+                              <td className="text-right py-2 font-medium text-neutral-800 dark:text-neutral-200">{active.nutrition.calories} kcal</td>
+                            </tr>
+                            <tr className="border-b border-neutral-100 dark:border-neutral-800">
+                              <td className="py-2 text-neutral-600 dark:text-neutral-400">Protein</td>
+                              <td className="text-right py-2 font-medium text-neutral-800 dark:text-neutral-200">{active.nutrition.protein}g</td>
+                            </tr>
+                            <tr className="border-b border-neutral-100 dark:border-neutral-800">
+                              <td className="py-2 text-neutral-600 dark:text-neutral-400">Carbohydrates</td>
+                              <td className="text-right py-2 font-medium text-neutral-800 dark:text-neutral-200">{active.nutrition.carbs}g</td>
+                            </tr>
+                            <tr className="border-b border-neutral-100 dark:border-neutral-800">
+                              <td className="py-2 text-neutral-600 dark:text-neutral-400">Fat</td>
+                              <td className="text-right py-2 font-medium text-neutral-800 dark:text-neutral-200">{active.nutrition.fat}g</td>
+                            </tr>
+                            <tr className="border-b border-neutral-100 dark:border-neutral-800">
+                              <td className="py-2 text-neutral-600 dark:text-neutral-400">Fiber</td>
+                              <td className="text-right py-2 font-medium text-neutral-800 dark:text-neutral-200">{active.nutrition.fiber}g</td>
+                            </tr>
+                            <tr>
+                              <td className="py-2 text-neutral-600 dark:text-neutral-400">Sodium</td>
+                              <td className="text-right py-2 font-medium text-neutral-800 dark:text-neutral-200">{active.nutrition.sodium}mg</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      ) : (
+                        <p className="text-neutral-600 dark:text-neutral-400">Nutrition information not available.</p>
+                      )}
+                    </motion.div>
+                  )}
                 </div>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
-
-      {/* 🧾 Floating Cart Popup */}
+      
+      {/* Floating Cart Popup */}
       {orders.length > 0 && (
         <motion.div
           initial={{ y: 100, opacity: 0 }}
@@ -282,8 +353,8 @@ export function ExpandableCardDemo() {
           </span>
         </motion.div>
       )}
-
-      {/* 🪄 Cart Modal */}
+      
+      {/* Cart Modal */}
       <AnimatePresence>
         {showCart && (
           <motion.div
@@ -302,7 +373,6 @@ export function ExpandableCardDemo() {
               <h2 className="text-xl font-bold mb-4 text-neutral-800 dark:text-neutral-200">
                 Your Orders
               </h2>
-
               {orders.length === 0 ? (
                 <p className="text-neutral-600 dark:text-neutral-400">
                   No items added yet.
@@ -322,7 +392,6 @@ export function ExpandableCardDemo() {
                           {o.variety || "Default"}
                         </p>
                       </div>
-
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => {
@@ -342,9 +411,7 @@ export function ExpandableCardDemo() {
                         >
                           -
                         </button>
-
                         <span className="w-6 text-center">{o.quantity}</span>
-
                         <button
                           onClick={() => {
                             const updated = [...orders];
@@ -364,7 +431,6 @@ export function ExpandableCardDemo() {
                   ))}
                 </ul>
               )}
-
               {orders.length > 0 && (
                 <>
                   <button
