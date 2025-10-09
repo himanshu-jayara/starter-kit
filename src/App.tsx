@@ -2,14 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import appLogo from '/favicon.svg'
 import PWABadge from './PWABadge.tsx'
-import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
+      <div className='bg-blue-500 text-white p-4 text-center'>This is a Tailwind CSS styled banner!
         <a href="https://vite.dev" target="_blank">
           <img src={appLogo} className="logo" alt="starter-kit logo" />
         </a>
