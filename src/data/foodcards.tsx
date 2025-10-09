@@ -11,9 +11,10 @@ import ButterNaan from '../assets/ButterNaan.jpg'
 export const foodCards = [
   {
     description: "North Indian Classic",
-    title: "Butter Chicken (Murgh Makhani)",
+    title: "Butter Chicken ",
     src: chickenbuttermasala,
     tags: ["non-veg", "lunch", "dinner"],
+    varieties: ["Quarter", "Half", "Full"],
     content: () => (
       <p>
         **Butter Chicken**, or **Murgh Makhani**, is a quintessential Indian
@@ -29,6 +30,7 @@ export const foodCards = [
     title: "Chicken Changezi",
     src: ChickenChangezi,
     tags: ["non-veg", "lunch", "dinner"],
+    varieties: ["Quarter", "Half", "Full"],
     content: () => (
       <p>
         **Chicken Changezi** is a rich, robust North Indian curry, said to be
@@ -44,6 +46,7 @@ export const foodCards = [
     title: "Chettinad Mutton Curry",
     src: ChettinadMuttonCurry,
     tags: ["non-veg", "lunch", "dinner"],
+    varieties: ["Quarter", "Half", "Full"],
     content: () => (
       <p>
         Hailing from the Chettinad region of Tamil Nadu, this **Mutton Curry**
@@ -59,6 +62,7 @@ export const foodCards = [
     title: "Paneer Butter Masala",
     src: PaneerButterMasala,
     tags: ["veg", "lunch", "dinner"],
+    varieties: ["Quarter", "Half", "Full"],
     content: () => (
       <p>
         The vegetarian counterpart to Butter Chicken, **Paneer Butter Masala**
@@ -74,6 +78,7 @@ export const foodCards = [
     title: "Paneer Kali Mirch",
     src: PaneerKaliMirch,
     tags: ["veg", "lunch", "dinner"],
+    varieties: ["Quarter", "Half", "Full"],
     content: () => (
       <p>
         **Paneer Kali Mirch** translates to Paneer with Black Pepper. This
@@ -89,6 +94,7 @@ export const foodCards = [
     title: "Chicken Kali Mirch",
     src: ChickenKaliMirch,
     tags: ["non-veg", "lunch", "dinner"],
+    varieties: ["Quarter", "Half", "Full"],
     content: () => (
       <p>
         Like its vegetarian sibling, **Chicken Kali Mirch** highlights the
@@ -105,6 +111,7 @@ export const foodCards = [
     title: "Butter Naan",
     src: ButterNaan,
     tags: ["veg", "bread", "lunch", "dinner"],
+    varieties: ["Quarter", "Half", "Full"],
     content: () => (
       <p>
         **Butter Naan** is a classic Indian flatbread, traditionally baked in a
