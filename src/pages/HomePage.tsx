@@ -12,7 +12,7 @@ function Menupage() {
   return (
     <div className="container mx-auto flex flex-col items-center justify-center text-center">
         <DottedGlowBackground
-          className="w-full pointer-events-none mask-radial-to-75% mask-radial-at-center"
+          className="w-full h-full pointer-events-none mask-radial-to-75% mask-radial-at-center"
           opacity={1}
           gap={10}
           radius={1.6}

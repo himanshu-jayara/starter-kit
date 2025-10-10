@@ -83,31 +83,32 @@ const TestimonialSlider = () => {
               src={testimonial}
               alt="Two people laughing while working on laptops"
               className="w-full h-auto max-h-[500px] object-cover"
-              variants={fadeLeftVariants}
               initial="initial"
               animate="animate"
               exit="exit"
               transition={{ duration: 0.6 }}
             />
           </AnimatePresence>
-          <div className="absolute bottom-6 right-6 flex space-x-3 p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg">
-            <NavButton direction="prev" onClick={prevTestimonial} />
-            <NavButton direction="next" onClick={nextTestimonial} />
-          </div>
+      
         </div>
 
         {/* Right Side */}
-        <div className="lg:w-1/2 pr-0 lg:pr-12 xl:pr-24 mb-10 lg:mb-0 text-gray-900 dark:text-gray-100">
+        <div className="lg:w-1/2 pr-0 lg:pr-12 xl:pr-24 mb-10 lg:mb-0 text-gray-900 dark:text-gray-100 flex flex-col justify-center">
           <span className="text-sm font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">
             Testimonials
           </span>
-          <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">
+          <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
             Our Clients <span className="text-indigo-600 dark:text-indigo-400">Love Us.</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300  mb-10">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 mb-4">
             Here is what some of our amazing customers are saying about our marketing professionals. Their insights and dedication helped drive measurable success for our clients.
           </p>
 
+
+          <div className=" flex justify-between px-4 mx-[40%] md:mx-[34%] my-8 flex space-x-3 p-2  rounded-full shadow-xl bg-gray-100 dark:bg-gray-900">
+            <NavButton direction="prev" onClick={prevTestimonial} />
+            <NavButton direction="next" onClick={nextTestimonial} />
+          </div>
           {/* Quote */}
           <div className="relative min-h-[150px]">
             <AnimatePresence mode="wait">
@@ -129,10 +130,10 @@ const TestimonialSlider = () => {
             <span className="absolute bottom-0 right-0 translate-x-4 translate-y-4 text-6xl text-indigo-300 dark:text-indigo-500 font-extrabold opacity-70 transform rotate-180">
               &ldquo;
             </span>
+        
           </div>
-
           {/* Author & Navigation */}
-          <div className="mt-8 flex items-center justify-between">
+          {/* <div className="mt-8 flex items-center justify-between">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -159,7 +160,7 @@ const TestimonialSlider = () => {
               <NavButton direction="prev" onClick={prevTestimonial} />
               <NavButton direction="next" onClick={nextTestimonial} />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

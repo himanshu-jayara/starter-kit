@@ -2,7 +2,7 @@
 import { useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
-import agencies, { tagImages } from "../../data/foodcards";
+import {agencies, tagImages } from "../../data/foodcards";
 
 interface MarketingMenuProps {
   agencyName: string;
