@@ -5,7 +5,7 @@ import { TextGenerateEffectDemo } from "../components/Cards/Homecard.tsx";
 
 function Menupage() {
   // You can change this to any restaurant name
-  const selectedRestaurant = "Delhi Spice Hub"; 
+  const selectedRestaurant =import.meta.env.VITE_RESTAURENT_NAME 
   // Other options: "Mumbai Masala Kitchen", "Punjab Da Dhaba"
 
   return (
