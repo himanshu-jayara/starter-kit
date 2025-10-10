@@ -112,8 +112,9 @@ export function ExpandableCardDemo({ restaurantName }: ExpandableCardDemoProps) 
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-4 w-4 text-black"
+      className="h-8 w-8 text-black dark:text-white"
       onClick={() => setActive(null)}
+      
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 6l-12 12" />
@@ -124,7 +125,7 @@ export function ExpandableCardDemo({ restaurantName }: ExpandableCardDemoProps) 
   return (
     <div className="relative">
       {/* Restaurant Header */}
-      <div className="max-w-2xl mx-auto w-full px-4 pt-4 pb-2 text-center">
+      <div className="max-w-4xl mx-auto w-full px-4 pt-4 pb-2 text-center">
         <h1 className="text-3xl font-bold text-neutral-800 dark:text-neutral-200 mb-2">
           {restaurant.name}
         </h1>
@@ -137,7 +138,7 @@ export function ExpandableCardDemo({ restaurantName }: ExpandableCardDemoProps) 
       </div>
 
       {/* Search Bar */}
-      <div className="max-w-2xl mx-auto w-full px-4 pb-2">
+      <div className="max-w-4xl mx-auto w-full px-4 pb-2">
         <div className="relative">
           <input
             type="text"
@@ -202,7 +203,7 @@ export function ExpandableCardDemo({ restaurantName }: ExpandableCardDemoProps) 
       </div>
       
       {/* Food Cards */}
-      <ul className="max-w-2xl mx-auto w-full gap-4 grid grid-cols-1 sm:grid-cols-2 py-8">
+      <ul className="max-w-4xl mx-auto w-full gap-4 grid grid-cols-1 sm:grid-cols-2 py-8">
         {filteredFoodCards.length > 0 ? (
           filteredFoodCards.map((card: any) => (
             <motion.div
