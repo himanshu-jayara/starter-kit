@@ -1,9 +1,31 @@
+// src/components/Cards/Menu.tsx
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
-import { foodCards, tagImages } from "../../data/foodcards";
+import { restaurants, tagImages } from "../../data/foodcards";
 
-export function ExpandableCardDemo() {
+interface ExpandableCardDemoProps {
+  restaurantName: string;
+}
+
+export function ExpandableCardDemo({ restaurantName }: ExpandableCardDemoProps) {
+  // Find the restaurant by name
+  const restaurant = restaurants.find(r => r.name === restaurantName);
+  
+  // If restaurant not found, show error
+  if (!restaurant) {
+    return (
+      <div className="max-w-2xl mx-auto w-full p-8 text-center">
+        <h2 className="text-2xl font-bold text-red-600 mb-2">Restaurant Not Found</h2>
+        <p className="text-neutral-600 dark:text-neutral-400">
+          The restaurant "{restaurantName}" could not be found.
+        </p>
+      </div>
+    );
+  }
+
+  const foodCards = restaurant.foodCards;
+  
   const [active, setActive] = useState<(typeof foodCards)[number] | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
@@ -77,32 +99,45 @@ export function ExpandableCardDemo() {
   };
   
   const CloseIcon = () => (
-  <motion.svg
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="h-4 w-4 text-black"
-    onClick={() => setActive(null)}
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M18 6l-12 12" />
-    <path d="M6 6l12 12" />
-  </motion.svg>
-);
-
+    <motion.svg
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4 text-black"
+      onClick={() => setActive(null)}
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 6l-12 12" />
+      <path d="M6 6l12 12" />
+    </motion.svg>
+  );
+  
   return (
     <div className="relative">
+      {/* Restaurant Header */}
+      <div className="max-w-2xl mx-auto w-full px-4 pt-4 pb-2 text-center">
+        <h1 className="text-3xl font-bold text-neutral-800 dark:text-neutral-200 mb-2">
+          {restaurant.name}
+        </h1>
+        <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-1">
+          📍 {restaurant.location}
+        </p>
+        <p className="text-md text-neutral-500 dark:text-neutral-500 mb-4">
+          {restaurant.cuisine}
+        </p>
+      </div>
+
       {/* Search Bar */}
-      <div className="max-w-2xl mx-auto w-full px-4 pt-4 pb-2">
+      <div className="max-w-2xl mx-auto w-full px-4 pb-2">
         <div className="relative">
           <input
             type="text"
@@ -221,10 +256,9 @@ export function ExpandableCardDemo() {
               ref={activeRef}
               layoutId={`card-${active.title}-${id}`}
               className="w-full max-w-[500px] bg-white dark:bg-neutral-900 rounded-3xl"
-              >
+            >
               <div className="mr-2 mt-2 flex justify-end cursor-pointer">
-  
-              <CloseIcon/>
+                <CloseIcon/>
               </div>
               <img
                 src={active.src}
@@ -508,7 +542,3 @@ export function ExpandableCardDemo() {
     </div>
   );
 }
-
-
-
-

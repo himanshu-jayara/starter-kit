@@ -1,313 +1,454 @@
-// src/data/foodCards.ts
-import chickenbuttermasala from '../assets/chickenbuttermasala.jpg'
-import ChickenChangezi from '../assets/ChickenChangezi.jpg'
-import ChettinadMuttonCurry from '../assets/ChettinadMuttonCurry.png'
-import PaneerButterMasala from '../assets/PaneerButterMasala.jpg'
-import PaneerKaliMirch from '../assets/PaneerKaliMirch.jpg'
-import ChickenKaliMirch from '../assets/ChickenKaliMirch.png'
-import ButterNaan from '../assets/ButterNaan.jpg'
+export const restaurants = [
+  {
+    name: "Delhi Spice Hub",
+    location: "Connaught Place, New Delhi",
+    cuisine: "North Indian",
+    foodCards: [
+      {
+        description: "Creamy Chicken Delicacy",
+        title: "Chicken Korma",
+        src: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=800",
+        tags: ["non-veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 280 },
+          { name: "Half", price: 500 },
+          { name: "Full", price: 950 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 252,
+          protein: 15.2,
+          carbs: 9.8,
+          fat: 18.4,
+          fiber: 1.3,
+          sodium: 445
+        },
+        content: () => (
+          <p>
+            **Chicken Korma** is a luxurious Mughlai dish featuring tender chicken
+            in a rich, creamy gravy made with yogurt, cream, and ground nuts. <br /><br />
+            This mildly spiced delicacy is fragrant with cardamom and saffron,
+            offering a royal dining experience that pairs beautifully with naan or biryani.
+          </p>
+        ),
+      },
+      {
+        description: "Smoky Tandoori Specialty",
+        title: "Tandoori Chicken",
+        src: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=800",
+        tags: ["non-veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 220 },
+          { name: "Half", price: 400 },
+          { name: "Full", price: 750 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 185,
+          protein: 24.5,
+          carbs: 4.2,
+          fat: 8.6,
+          fiber: 0.8,
+          sodium: 380
+        },
+        content: () => (
+          <p>
+            **Tandoori Chicken** is a classic North Indian dish where chicken is
+            marinated in yogurt and spices, then roasted in a tandoor oven. <br /><br />
+            The result is succulent, smoky meat with a beautiful red color from
+            Kashmiri chili, perfect as an appetizer or main course.
+          </p>
+        ),
+      },
+      {
+        description: "Spinach & Cottage Cheese",
+        title: "Palak Paneer",
+        src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=800",
+        tags: ["veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 190 },
+          { name: "Half", price: 340 },
+          { name: "Full", price: 640 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 175,
+          protein: 11.2,
+          carbs: 8.5,
+          fat: 12.3,
+          fiber: 3.2,
+          sodium: 365
+        },
+        content: () => (
+          <p>
+            **Palak Paneer** combines soft paneer cubes with a vibrant spinach
+            gravy, enriched with cream and aromatic spices. <br /><br />
+            This nutritious vegetarian favorite is both healthy and indulgent,
+            offering a perfect balance of flavors and textures.
+          </p>
+        ),
+      },
+      {
+        description: "Leavened Garlic Bread",
+        title: "Garlic Naan",
+        src: "https://images.unsplash.com/photo-1619365909620-09f5c2b0c6c5?q=80&w=800",
+        tags: ["veg", "bread", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 50 },
+          { name: "Half", price: 85 },
+          { name: "Full", price: 140 }
+        ],
+        nutrition: {
+          servingSize: "1 piece (95g)",
+          calories: 285,
+          protein: 7.8,
+          carbs: 45.2,
+          fat: 8.5,
+          fiber: 2.3,
+          sodium: 465
+        },
+        content: () => (
+          <p>
+            **Garlic Naan** elevates the classic naan with aromatic minced garlic
+            and fresh cilantro, brushed with butter. <br /><br />
+            Baked in a tandoor, this flavorful bread is irresistible and pairs
+            excellently with any curry or dal.
+          </p>
+        ),
+      },
+      {
+        description: "Layered Whole Wheat Bread",
+        title: "Lachha Paratha",
+        src: "https://images.unsplash.com/photo-1626456725212-9ce7dc8eff53?q=80&w=800",
+        tags: ["veg", "bread", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 45 },
+          { name: "Half", price: 75 },
+          { name: "Full", price: 130 }
+        ],
+        nutrition: {
+          servingSize: "1 piece (80g)",
+          calories: 215,
+          protein: 5.2,
+          carbs: 32.8,
+          fat: 7.5,
+          fiber: 3.5,
+          sodium: 325
+        },
+        content: () => (
+          <p>
+            **Lachha Paratha** is a flaky, multi-layered whole wheat flatbread
+            cooked on a tawa with ghee. <br /><br />
+            Its crispy layers and buttery flavor make it a delightful accompaniment
+            to rich gravies and kebabs.
+          </p>
+        ),
+      },
+    ]
+  },
+  {
+    name: "Mumbai Masala Kitchen",
+    location: "Bandra West, Mumbai",
+    cuisine: "Maharashtrian & North Indian Fusion",
+    foodCards: [
+      {
+        description: "Street Food Icon",
+        title: "Pav Bhaji",
+        src: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=800",
+        tags: ["veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 120 },
+          { name: "Half", price: 200 },
+          { name: "Full", price: 350 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 195,
+          protein: 4.5,
+          carbs: 28.5,
+          fat: 7.8,
+          fiber: 3.2,
+          sodium: 485
+        },
+        content: () => (
+          <p>
+            **Pav Bhaji** is Mumbai's beloved street food - a spicy vegetable mash
+            cooked with butter and aromatic spices. <br /><br />
+            Served with soft buttered pav (bread rolls), this dish is garnished with
+            onions, lemon, and extra butter for an unforgettable taste.
+          </p>
+        ),
+      },
+      {
+        description: "Spicy Coastal Curry",
+        title: "Kolhapuri Chicken",
+        src: "https://images.unsplash.com/photo-1574484284002-952d92456975?q=80&w=800",
+        tags: ["non-veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 290 },
+          { name: "Half", price: 520 },
+          { name: "Full", price: 980 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 268,
+          protein: 17.8,
+          carbs: 7.5,
+          fat: 19.5,
+          fiber: 1.8,
+          sodium: 525
+        },
+        content: () => (
+          <p>
+            **Kolhapuri Chicken** is a fiery dish from Maharashtra, featuring
+            chicken in a rich, red gravy made with Kolhapuri spices. <br /><br />
+            Known for its intense heat and bold flavors, this curry is perfect
+            for spice lovers seeking an authentic regional experience.
+          </p>
+        ),
+      },
+      {
+        description: "Stuffed Eggplant Curry",
+        title: "Bharli Vangi",
+        src: "https://images.unsplash.com/photo-1589621316382-008455b857cd?q=80&w=800",
+        tags: ["veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 180 },
+          { name: "Half", price: 320 },
+          { name: "Full", price: 600 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 145,
+          protein: 3.8,
+          carbs: 12.5,
+          fat: 9.2,
+          fiber: 4.5,
+          sodium: 340
+        },
+        content: () => (
+          <p>
+            **Bharli Vangi** features baby eggplants stuffed with a spicy mixture
+            of peanuts, coconut, and aromatic Maharashtrian spices. <br /><br />
+            This traditional dish offers complex flavors with a delightful
+            combination of sweet, spicy, and nutty notes.
+          </p>
+        ),
+      },
+      {
+        description: "Crispy Puffed Bread",
+        title: "Bhatura",
+        src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=800",
+        tags: ["veg", "bread", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 60 },
+          { name: "Half", price: 100 },
+          { name: "Full", price: 170 }
+        ],
+        nutrition: {
+          servingSize: "1 piece (100g)",
+          calories: 310,
+          protein: 6.8,
+          carbs: 48.5,
+          fat: 10.5,
+          fiber: 2.1,
+          sodium: 385
+        },
+        content: () => (
+          <p>
+            **Bhatura** is a deep-fried, fluffy leavened bread that puffs up
+            beautifully when cooked. <br /><br />
+            Traditionally paired with chole (chickpea curry), this indulgent bread
+            is crispy on the outside and soft inside, perfect for special occasions.
+          </p>
+        ),
+      },
+      {
+        description: "Sweet Yogurt Drink",
+        title: "Mango Lassi",
+        src: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?q=80&w=800",
+        tags: ["veg", "beverage", "lunch", "dinner"],
+        varieties: [
+          { name: "Small", price: 80 },
+          { name: "Medium", price: 120 },
+          { name: "Large", price: 180 }
+        ],
+        nutrition: {
+          servingSize: "250ml",
+          calories: 165,
+          protein: 5.2,
+          carbs: 28.5,
+          fat: 3.8,
+          fiber: 1.2,
+          sodium: 125
+        },
+        content: () => (
+          <p>
+            **Mango Lassi** is a refreshing blend of ripe mangoes, yogurt, and
+            a touch of cardamom. <br /><br />
+            This creamy, sweet beverage is perfect for cooling down after spicy
+            meals and is beloved across India, especially in summer.
+          </p>
+        ),
+      },
+    ]
+  },
+  {
+    name: "Punjab Da Dhaba",
+    location: "Punjabi Bagh, New Delhi",
+    cuisine: "Authentic Punjabi",
+    foodCards: [
+      {
+        description: "Chickpea Curry Classic",
+        title: "Chole Bhature",
+        src: "https://images.unsplash.com/photo-1626074353765-517a681e40be?q=80&w=800",
+        tags: ["veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 150 },
+          { name: "Half", price: 260 },
+          { name: "Full", price: 480 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 285,
+          protein: 8.5,
+          carbs: 38.2,
+          fat: 11.5,
+          fiber: 6.8,
+          sodium: 465
+        },
+        content: () => (
+          <p>
+            **Chole Bhature** is Punjab's most iconic breakfast and lunch dish,
+            featuring spicy chickpea curry with puffed bhature bread. <br /><br />
+            The tangy, aromatic chole paired with crispy bhature creates an
+            irresistible combination that's hearty and satisfying.
+          </p>
+        ),
+      },
+      {
+        description: "Mustard Greens Delight",
+        title: "Sarson Ka Saag",
+        src: "https://images.unsplash.com/photo-1589621316382-008455b857cd?q=80&w=800",
+        tags: ["veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 170 },
+          { name: "Half", price: 300 },
+          { name: "Full", price: 560 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 135,
+          protein: 5.2,
+          carbs: 12.8,
+          fat: 7.5,
+          fiber: 4.5,
+          sodium: 325
+        },
+        content: () => (
+          <p>
+            **Sarson Ka Saag** is a traditional Punjabi dish made from mustard
+            greens, spinach, and other leafy vegetables. <br /><br />
+            Slow-cooked with spices and finished with butter, this nutritious
+            dish is classically served with makki di roti (corn flatbread).
+          </p>
+        ),
+      },
+      {
+        description: "Grilled Minced Meat",
+        title: "Seekh Kebab",
+        src: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=800",
+        tags: ["non-veg", "lunch", "dinner"],
+        varieties: [
+          { name: "Quarter", price: 240 },
+          { name: "Half", price: 430 },
+          { name: "Full", price: 820 }
+        ],
+        nutrition: {
+          servingSize: "100g",
+          calories: 245,
+          protein: 18.5,
+          carbs: 3.2,
+          fat: 18.2,
+          fiber: 0.8,
+          sodium: 425
+        },
+        content: () => (
+          <p>
+            **Seekh Kebab** consists of spiced minced meat molded onto skewers
+            and grilled in a tandoor until perfectly charred. <br /><br />
+            These succulent, smoky kebabs are aromatic with cumin, coriander,
+            and garam masala, making them a favorite appetizer or main course.
+          </p>
+        ),
+      },
+      {
+        description: "Corn Flatbread",
+        title: "Makki Di Roti",
+        src: "https://images.unsplash.com/photo-1593355799195-2f9b8c0c9e6c?q=80&w=800",
+        tags: ["veg", "bread", "lunch", "dinner"],
+        varieties: [
+          { name: "Single", price: 35 },
+          { name: "Pair", price: 60 },
+          { name: "Set of 4", price: 110 }
+        ],
+        nutrition: {
+          servingSize: "1 piece (70g)",
+          calories: 145,
+          protein: 3.5,
+          carbs: 28.5,
+          fat: 2.8,
+          fiber: 3.8,
+          sodium: 185
+        },
+        content: () => (
+          <p>
+            **Makki Di Roti** is a rustic flatbread made from cornmeal, traditionally
+            paired with Sarson Ka Saag. <br /><br />
+            This gluten-free bread has a distinctive texture and earthy flavor,
+            representing authentic Punjabi winter cuisine.
+          </p>
+        ),
+      },
+      {
+        description: "Traditional Buttermilk",
+        title: "Punjabi Lassi",
+        src: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?q=80&w=800",
+        tags: ["veg", "beverage", "lunch", "dinner"],
+        varieties: [
+          { name: "Small", price: 70 },
+          { name: "Medium", price: 110 },
+          { name: "Large", price: 160 }
+        ],
+        nutrition: {
+          servingSize: "250ml",
+          calories: 155,
+          protein: 6.5,
+          carbs: 22.5,
+          fat: 4.2,
+          fiber: 0,
+          sodium: 145
+        },
+        content: () => (
+          <p>
+            **Punjabi Lassi** is a thick, creamy yogurt drink, often sweetened
+            or salted, and topped with malai (cream). <br /><br />
+            This traditional beverage is refreshing, probiotic-rich, and perfect
+            for balancing spicy Punjabi meals.
+          </p>
+        ),
+      },
+    ]
+  }
+];
 
-export const foodCards = [
-  {
-    description: "North Indian Classic",
-    title: "Butter Chicken",
-    src: chickenbuttermasala,
-    tags: ["non-veg", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 250 },
-      { name: "Half", price: 450 },
-      { name: "Full", price: 850 }
-    ],
-    nutrition: {
-      servingSize: "100g",
-      calories: 235,
-      protein: 14.2,
-      carbs: 8.5,
-      fat: 16.8,
-      fiber: 1.2,
-      sodium: 420
-    },
-    content: () => (
-      <p>
-        **Butter Chicken**, or **Murgh Makhani**, is a quintessential Indian
-        delight from Delhi. It features tender, marinated chicken pieces
-        swimming in a rich, creamy tomato and butter-based gravy. <br /><br />
-        This mildly spiced, globally loved dish is famous for its velvety texture
-        and subtle sweetness, making it the perfect partner for naan bread.
-      </p>
-    ),
-  },
-  {
-    description: "Mughlai Royal Curry",
-    title: "Chicken Changezi",
-    src: ChickenChangezi,
-    tags: ["non-veg", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 270 },
-      { name: "Half", price: 480 },
-      { name: "Full", price: 900 }
-    ],
-    nutrition: {
-      servingSize: "100g",
-      calories: 248,
-      protein: 16.5,
-      carbs: 9.2,
-      fat: 17.3,
-      fiber: 1.5,
-      sodium: 465
-    },
-    content: () => (
-      <p>
-        **Chicken Changezi** is a rich, robust North Indian curry, said to be
-        named after the Mongol emperor Genghis Khan. It's a luscious blend
-        of roasted chicken pieces tossed in a deeply flavored tomato and onion gravy. <br /><br />
-        Unlike Butter Chicken, it offers a more pronounced spice profile and a
-        tangy depth, often garnished lavishly with cream and cilantro.
-      </p>
-    ),
-  },
-  {
-    description: "South Indian Spicy Delicacy",
-    title: "Chettinad Mutton Curry",
-    src: ChettinadMuttonCurry,
-    tags: ["non-veg", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 320 },
-      { name: "Half", price: 580 },
-      { name: "Full", price: 1100 }
-    ],
-    nutrition: {
-      servingSize: "100g",
-      calories: 285,
-      protein: 18.6,
-      carbs: 6.8,
-      fat: 21.4,
-      fiber: 2.1,
-      sodium: 510
-    },
-    content: () => (
-      <p>
-        Hailing from the Chettinad region of Tamil Nadu, this **Mutton Curry**
-        is legendary for its complex and fiery spice blend. It uses fresh,
-        locally ground spices like star anise, fennel seeds, and stone flower. <br /><br />
-        Tender mutton pieces are slow-cooked in a thick, aromatic gravy,
-        providing a vibrant, deep heat and earthy flavor that is truly unique.
-      </p>
-    ),
-  },
-  {
-    description: "Vegetarian Comfort Curry",
-    title: "Paneer Butter Masala",
-    src: PaneerButterMasala,
-    tags: ["veg", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 200 },
-      { name: "Half", price: 360 },
-      { name: "Full", price: 680 }
-    ],
-    nutrition: {
-      servingSize: "100g",
-      calories: 265,
-      protein: 12.8,
-      carbs: 10.2,
-      fat: 19.5,
-      fiber: 1.8,
-      sodium: 385
-    },
-    content: () => (
-      <p>
-        The vegetarian counterpart to Butter Chicken, **Paneer Butter Masala**
-        is a creamy indulgence. Soft cubes of paneer (Indian cottage cheese)
-        are simmered in a silky-smooth tomato, cashew, and butter-rich gravy. <br /><br />
-        This dish is a popular North Indian classic, known for its sweet and
-        mildly spiced flavor profile, perfect for a satisfying meal.
-      </p>
-    ),
-  },
-  {
-    description: "Black Pepper Paneer Fry",
-    title: "Paneer Kali Mirch",
-    src: PaneerKaliMirch,
-    tags: ["veg", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 210 },
-      { name: "Half", price: 380 },
-      { name: "Full", price: 720 }
-    ],
-    nutrition: {
-      servingSize: "100g",
-      calories: 242,
-      protein: 13.5,
-      carbs: 8.6,
-      fat: 17.8,
-      fiber: 1.2,
-      sodium: 395
-    },
-    content: () => (
-      <p>
-        **Paneer Kali Mirch** translates to Paneer with Black Pepper. This
-        distinctive curry focuses on the sharp, aromatic heat of freshly
-        crushed black pepper in a creamy, yogurt-based white sauce. <br /><br />
-        It's a subtly flavored dish that stands apart from the typical tomato
-        gravies, offering a sophisticated and peppery kick.
-      </p>
-    ),
-  },
-  {
-    description: "Peppery Chicken White Curry",
-    title: "Chicken Kali Mirch",
-    src: ChickenKaliMirch,
-    tags: ["non-veg", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 260 },
-      { name: "Half", price: 470 },
-      { name: "Full", price: 880 }
-    ],
-    nutrition: {
-      servingSize: "100g",
-      calories: 228,
-      protein: 15.8,
-      carbs: 7.4,
-      fat: 16.2,
-      fiber: 0.9,
-      sodium: 425
-    },
-    content: () => (
-      <p>
-        Like its vegetarian sibling, **Chicken Kali Mirch** highlights the
-        bold flavor of black pepper. Succulent chicken pieces are cooked in a
-        creamy, rich gravy of yogurt, cream, and a generous amount of freshly
-        cracked black pepper. <br /><br />
-        It's a luxurious, medium-spicy dish prized for its depth of flavor and
-        aromatic finish, often served at celebratory feasts.
-      </p>
-    ),
-  },
-  {
-    description: "Tandoor Baked Flatbread",
-    title: "Butter Naan",
-    src: ButterNaan,
-    tags: ["veg", "bread", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 40 },
-      { name: "Half", price: 70 },
-      { name: "Full", price: 120 }
-    ],
-    nutrition: {
-      servingSize: "1 piece (90g)",
-      calories: 262,
-      protein: 7.2,
-      carbs: 43.5,
-      fat: 7.8,
-      fiber: 2.1,
-      sodium: 425
-    },
-    content: () => (
-      <p>
-        **Butter Naan** is a classic Indian flatbread, traditionally baked in a
-        scorching hot tandoor (clay oven). Made from refined flour, it's soft,
-        chewy, and slightly puffed. <br /><br />
-        Brushed with melted butter for a rich, moist finish, it's the ideal
-        bread for scooping up any rich curry or gravy.
-      </p>
-    ),
-  },
-  {
-    description: "Feather-Thin & Whole Wheat Roti",
-    title: "Rumali Roti & Tawa Roti Combo",
-    src: "https://images.unsplash.com/photo-1593355799195-2f9b8c0c9e6c?q=80&w=800",
-    tags: ["veg", "bread", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 30 },
-      { name: "Half", price: 50 },
-      { name: "Full", price: 90 }
-    ],
-    nutrition: {
-      servingSize: "1 piece (50g)",
-      calories: 120,
-      protein: 3.8,
-      carbs: 24.2,
-      fat: 1.5,
-      fiber: 2.8,
-      sodium: 185
-    },
-    content: () => (
-      <p>
-        Enjoy two styles of Indian bread: **Rumali Roti**, an extremely thin,
-        handkerchief-like bread, and **Tawa Roti**, a wholesome, everyday
-        whole wheat bread cooked on a flat griddle (Tawa). <br /><br />
-        Rumali is light and elegant, while Tawa Roti is simple, healthy, and a staple of every North Indian meal.
-      </p>
-    ),
-  },
-  {
-    description: "Refreshing Yogurt Dip",
-    title: "Vegetable Raita",
-    src: "https://images.unsplash.com/photo-1512485694200-a07817e88f4c?q=80&w=800",
-    tags: ["veg", "side", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 50 },
-      { name: "Half", price: 80 },
-      { name: "Full", price: 140 }
-    ],
-    nutrition: {
-      servingSize: "100g",
-      calories: 68,
-      protein: 3.5,
-      carbs: 8.2,
-      fat: 2.8,
-      fiber: 0.8,
-      sodium: 245
-    },
-    content: () => (
-      <p>
-        **Raita** is a cooling and creamy yogurt-based side dish. This version,
-        **Vegetable Raita**, mixes whisked yogurt with finely chopped cucumber,
-        onions, and tomatoes, seasoned with roasted cumin and salt. <br /><br />
-        It acts as a perfect counterpoint to the heat of the curries, cleansing
-        the palate and adding a refreshing, probiotic element to the meal.
-      </p>
-    ),
-  },
-  {
-    description: "Essential Side Dishes",
-    title: "Kachumber Salad & Achar (Pickles)",
-    src: "https://images.unsplash.com/photo-1596660447306-0b3f8a4f8f74?q=80&w=800",
-    tags: ["veg", "side", "lunch", "dinner"],
-    varieties: [
-      { name: "Quarter", price: 40 },
-      { name: "Half", price: 60 },
-      { name: "Full", price: 100 }
-    ],
-    nutrition: {
-      servingSize: "100g",
-      calories: 42,
-      protein: 1.8,
-      carbs: 9.5,
-      fat: 0.4,
-      fiber: 2.6,
-      sodium: 520
-    },
-    content: () => (
-      <p>
-        Complete your Indian feast with essential accompaniments! The **Kachumber Salad**
-        offers a crunchy, tangy mix of fresh vegetables, while **Achar (Pickles)**,
-        like mango or lime, provide a bold, spicy, and sour burst of flavor. <br /><br />
-        These sides cut through the richness of the main courses, adding vital
-        texture and zest to every bite.
-      </p>
-    ),
-  },
-]
+export default restaurants;
 
 export const tagImages: Record<string, string> = {
   "veg": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "non-veg": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
+  "non-veg": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
   "breakfast": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
   "lunch": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
   "dinner": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "bread": "https://images.unsplash.com/photo-1576163839054-96f2d4374d85?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "side": "https://images.unsplash.com/photo-1559628234-9f4dcd83c78a?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "spicy": "https://images.unsplash.com/photo-1624828913956-0f5a5adcbdf2?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
   "mild": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
 }
