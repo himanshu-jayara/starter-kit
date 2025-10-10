@@ -103,7 +103,7 @@ const FAQSection = () => {
               <div className="w-full flex justify-center lg:justify-start">
                 <div className="relative w-full max-w-[400px] aspect-w-16 aspect-h-9 sm:aspect-h-7 lg:aspect-h-1 flex items-end">
                   <div className="absolute bottom-0 w-full h-[60%] bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg"></div>
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-[70%] bg-white dark:bg-gray-700 rounded-t-lg shadow-md flex items-center justify-center pt-8">
+                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[85%] h-[70%] bg-white dark:bg-gray-700 rounded-t-lg shadow-md flex items-center justify-center pt-8">
                     <div className="w-28 h-28 rounded-full bg-indigo-500 dark:bg-indigo-400"></div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-indigo-700 dark:bg-indigo-600 border-4 border-white dark:border-gray-900"></div>
                     <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-8 w-16 bg-gray-800 dark:bg-gray-200 rounded-full"></div>

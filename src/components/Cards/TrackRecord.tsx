@@ -7,8 +7,8 @@ export default function TrackRecordSection() {
     <section className="flex flex-col md:flex-row items-center justify-center py-36 transition-colors duration-500">
       {/* Left Image */}
       <motion.div
-        initial={{ opacity: 0, x: -150 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: -150 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
         className="flex-1 flex justify-center"
@@ -22,8 +22,8 @@ export default function TrackRecordSection() {
 
       {/* Right Content */}
       <motion.div
-        initial={{ opacity: 0, x: 150 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 150 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         viewport={{ once: true }}
         className="flex-1 text-center md:text-left mt-10 md:mt-0 space-y-5"
