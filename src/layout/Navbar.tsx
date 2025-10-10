@@ -19,7 +19,7 @@ export function MainNavbar() {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Menu", path: "/menu" },
+    { name: "Services", path: "/services" },
     { name: "About Us", path: "/about" },
   ];
 
@@ -49,9 +49,9 @@ export function MainNavbar() {
           <div className="flex items-center gap-4">
             <NavbarButton
               variant="primary"
-              onClick={() => handleNavigate("/menu")}
+              onClick={() => handleNavigate("/services")}
             >
-              View Menu
+              View Services
             </NavbarButton>
             <DarkModeSwitch />
           </div>
@@ -88,7 +88,7 @@ export function MainNavbar() {
               variant="primary"
               className="w-full"
             >
-              View Menu
+              View Services
             </NavbarButton>
           </MobileNavMenu>
         </MobileNav>

@@ -1,454 +1,153 @@
-export const restaurants = [
+export const agencies = [
   {
-    name: "Delhi Spice Hub",
+    name: "Vertex Nexus",
     location: "Connaught Place, New Delhi",
-    cuisine: "North Indian",
-    foodCards: [
+    specialty: "Full Stack Digital Marketing",
+    serviceCards: [
       {
-        description: "Creamy Chicken Delicacy",
-        title: "Chicken Korma",
-        src: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=800",
-        tags: ["non-veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 280 },
-          { name: "Half", price: 500 },
-          { name: "Full", price: 950 }
+        description: "Grow your brand with targeted campaigns",
+        title: "Ads Management",
+        src: "https://images.unsplash.com/photo-1581093588401-0e4f5c72e4f0?q=80&w=800",
+        tags: ["paid ads", "social media", "campaigns"],
+        packages: [
+          { name: "Basic", price: 500 },
+          { name: "Standard", price: 1200 },
+          { name: "Premium", price: 2500 }
         ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 252,
-          protein: 15.2,
-          carbs: 9.8,
-          fat: 18.4,
-          fiber: 1.3,
-          sodium: 445
-        },
-        content: () => (
+        details: () => (
           <p>
-            **Chicken Korma** is a luxurious Mughlai dish featuring tender chicken
-            in a rich, creamy gravy made with yogurt, cream, and ground nuts. <br /><br />
-            This mildly spiced delicacy is fragrant with cardamom and saffron,
-            offering a royal dining experience that pairs beautifully with naan or biryani.
+            **Ads Management** includes creating and optimizing paid ad campaigns
+            across platforms like Google, Facebook, and Instagram. <br /><br />
+            We target the right audience, monitor performance, and maximize ROI
+            to ensure your marketing budget works efficiently.
           </p>
         ),
       },
       {
-        description: "Smoky Tandoori Specialty",
-        title: "Tandoori Chicken",
-        src: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=800",
-        tags: ["non-veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 220 },
-          { name: "Half", price: 400 },
-          { name: "Full", price: 750 }
+        description: "Enhance visibility on search engines",
+        title: "SEO Optimization",
+        src: "https://images.unsplash.com/photo-1565372911251-1d99b1e4b86e?q=80&w=800",
+        tags: ["organic traffic", "on-page SEO", "off-page SEO"],
+        packages: [
+          { name: "Starter", price: 800 },
+          { name: "Growth", price: 1500 },
+          { name: "Advanced", price: 3000 }
         ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 185,
-          protein: 24.5,
-          carbs: 4.2,
-          fat: 8.6,
-          fiber: 0.8,
-          sodium: 380
-        },
-        content: () => (
+        details: () => (
           <p>
-            **Tandoori Chicken** is a classic North Indian dish where chicken is
-            marinated in yogurt and spices, then roasted in a tandoor oven. <br /><br />
-            The result is succulent, smoky meat with a beautiful red color from
-            Kashmiri chili, perfect as an appetizer or main course.
+            **SEO Optimization** improves your website's search engine ranking
+            through keyword research, content optimization, and backlink strategies. <br /><br />
+            Our goal is to drive consistent organic traffic and increase brand visibility.
           </p>
         ),
       },
       {
-        description: "Spinach & Cottage Cheese",
-        title: "Palak Paneer",
-        src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=800",
-        tags: ["veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 190 },
-          { name: "Half", price: 340 },
-          { name: "Full", price: 640 }
+        description: "Engage your audience creatively",
+        title: "Content Creation",
+        src: "https://images.unsplash.com/photo-1612831455542-7b8eabe32dff?q=80&w=800",
+        tags: ["blog", "video", "graphics"],
+        packages: [
+          { name: "Basic", price: 400 },
+          { name: "Standard", price: 900 },
+          { name: "Premium", price: 1800 }
         ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 175,
-          protein: 11.2,
-          carbs: 8.5,
-          fat: 12.3,
-          fiber: 3.2,
-          sodium: 365
-        },
-        content: () => (
+        details: () => (
           <p>
-            **Palak Paneer** combines soft paneer cubes with a vibrant spinach
-            gravy, enriched with cream and aromatic spices. <br /><br />
-            This nutritious vegetarian favorite is both healthy and indulgent,
-            offering a perfect balance of flavors and textures.
+            **Content Creation** includes designing blogs, graphics, and videos
+            that resonate with your audience. <br /><br />
+            Our team crafts content that aligns with your brand voice and boosts engagement.
           </p>
         ),
       },
       {
-        description: "Leavened Garlic Bread",
-        title: "Garlic Naan",
-        src: "https://images.unsplash.com/photo-1619365909620-09f5c2b0c6c5?q=80&w=800",
-        tags: ["veg", "bread", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 50 },
-          { name: "Half", price: 85 },
-          { name: "Full", price: 140 }
+        description: "Build a strong social media presence",
+        title: "Social Media Management",
+        src: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=800",
+        tags: ["facebook", "instagram", "linkedin"],
+        packages: [
+          { name: "Starter", price: 600 },
+          { name: "Growth", price: 1300 },
+          { name: "Pro", price: 2600 }
         ],
-        nutrition: {
-          servingSize: "1 piece (95g)",
-          calories: 285,
-          protein: 7.8,
-          carbs: 45.2,
-          fat: 8.5,
-          fiber: 2.3,
-          sodium: 465
-        },
-        content: () => (
+        details: () => (
           <p>
-            **Garlic Naan** elevates the classic naan with aromatic minced garlic
-            and fresh cilantro, brushed with butter. <br /><br />
-            Baked in a tandoor, this flavorful bread is irresistible and pairs
-            excellently with any curry or dal.
+            **Social Media Management** manages and grows your social profiles
+            through consistent posting, audience engagement, and analytics. <br /><br />
+            We ensure your brand stays active and appealing across multiple platforms.
           </p>
         ),
       },
       {
-        description: "Layered Whole Wheat Bread",
-        title: "Lachha Paratha",
-        src: "https://images.unsplash.com/photo-1626456725212-9ce7dc8eff53?q=80&w=800",
-        tags: ["veg", "bread", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 45 },
-          { name: "Half", price: 75 },
-          { name: "Full", price: 130 }
+        description: "Convert visitors into customers",
+        title: "Email Marketing",
+        src: "https://images.unsplash.com/photo-1581091012184-3f4d64f155e1?q=80&w=800",
+        tags: ["newsletter", "campaigns", "leads"],
+        packages: [
+          { name: "Basic", price: 300 },
+          { name: "Standard", price: 700 },
+          { name: "Premium", price: 1500 }
         ],
-        nutrition: {
-          servingSize: "1 piece (80g)",
-          calories: 215,
-          protein: 5.2,
-          carbs: 32.8,
-          fat: 7.5,
-          fiber: 3.5,
-          sodium: 325
-        },
-        content: () => (
+        details: () => (
           <p>
-            **Lachha Paratha** is a flaky, multi-layered whole wheat flatbread
-            cooked on a tawa with ghee. <br /><br />
-            Its crispy layers and buttery flavor make it a delightful accompaniment
-            to rich gravies and kebabs.
+            **Email Marketing** helps nurture leads and retain customers
+            through targeted email campaigns. <br /><br />
+            We create visually appealing emails with compelling content that drives conversions.
           </p>
         ),
       },
-    ]
+    ],
   },
   {
-    name: "Mumbai Masala Kitchen",
+    name: "GrowthHacker Media",
     location: "Bandra West, Mumbai",
-    cuisine: "Maharashtrian & North Indian Fusion",
-    foodCards: [
+    specialty: "Performance Marketing & Branding",
+    serviceCards: [
       {
-        description: "Street Food Icon",
-        title: "Pav Bhaji",
-        src: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=800",
-        tags: ["veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 120 },
-          { name: "Half", price: 200 },
-          { name: "Full", price: 350 }
+        description: "Boost online sales with ads",
+        title: "PPC Campaigns",
+        src: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=800",
+        tags: ["google ads", "facebook ads", "paid media"],
+        packages: [
+          { name: "Basic", price: 700 },
+          { name: "Standard", price: 1400 },
+          { name: "Premium", price: 2800 }
         ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 195,
-          protein: 4.5,
-          carbs: 28.5,
-          fat: 7.8,
-          fiber: 3.2,
-          sodium: 485
-        },
-        content: () => (
+        details: () => (
           <p>
-            **Pav Bhaji** is Mumbai's beloved street food - a spicy vegetable mash
-            cooked with butter and aromatic spices. <br /><br />
-            Served with soft buttered pav (bread rolls), this dish is garnished with
-            onions, lemon, and extra butter for an unforgettable taste.
+            **PPC Campaigns** focus on paid ads with strategic targeting
+            to generate immediate traffic and leads. <br /><br />
+            We optimize campaigns to minimize cost per click while maximizing reach.
           </p>
         ),
       },
       {
-        description: "Spicy Coastal Curry",
-        title: "Kolhapuri Chicken",
-        src: "https://images.unsplash.com/photo-1574484284002-952d92456975?q=80&w=800",
-        tags: ["non-veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 290 },
-          { name: "Half", price: 520 },
-          { name: "Full", price: 980 }
+        description: "Strengthen brand presence online",
+        title: "Brand Strategy",
+        src: "https://images.unsplash.com/photo-1565372911251-1d99b1e4b86e?q=80&w=800",
+        tags: ["branding", "identity", "positioning"],
+        packages: [
+          { name: "Starter", price: 1000 },
+          { name: "Growth", price: 2000 },
+          { name: "Advanced", price: 4000 }
         ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 268,
-          protein: 17.8,
-          carbs: 7.5,
-          fat: 19.5,
-          fiber: 1.8,
-          sodium: 525
-        },
-        content: () => (
+        details: () => (
           <p>
-            **Kolhapuri Chicken** is a fiery dish from Maharashtra, featuring
-            chicken in a rich, red gravy made with Kolhapuri spices. <br /><br />
-            Known for its intense heat and bold flavors, this curry is perfect
-            for spice lovers seeking an authentic regional experience.
+            **Brand Strategy** helps define your brand voice, identity, and positioning
+            in the market. <br /><br />
+            We create a cohesive plan that aligns your messaging and marketing efforts.
           </p>
         ),
       },
-      {
-        description: "Stuffed Eggplant Curry",
-        title: "Bharli Vangi",
-        src: "https://images.unsplash.com/photo-1589621316382-008455b857cd?q=80&w=800",
-        tags: ["veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 180 },
-          { name: "Half", price: 320 },
-          { name: "Full", price: 600 }
-        ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 145,
-          protein: 3.8,
-          carbs: 12.5,
-          fat: 9.2,
-          fiber: 4.5,
-          sodium: 340
-        },
-        content: () => (
-          <p>
-            **Bharli Vangi** features baby eggplants stuffed with a spicy mixture
-            of peanuts, coconut, and aromatic Maharashtrian spices. <br /><br />
-            This traditional dish offers complex flavors with a delightful
-            combination of sweet, spicy, and nutty notes.
-          </p>
-        ),
-      },
-      {
-        description: "Crispy Puffed Bread",
-        title: "Bhatura",
-        src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=800",
-        tags: ["veg", "bread", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 60 },
-          { name: "Half", price: 100 },
-          { name: "Full", price: 170 }
-        ],
-        nutrition: {
-          servingSize: "1 piece (100g)",
-          calories: 310,
-          protein: 6.8,
-          carbs: 48.5,
-          fat: 10.5,
-          fiber: 2.1,
-          sodium: 385
-        },
-        content: () => (
-          <p>
-            **Bhatura** is a deep-fried, fluffy leavened bread that puffs up
-            beautifully when cooked. <br /><br />
-            Traditionally paired with chole (chickpea curry), this indulgent bread
-            is crispy on the outside and soft inside, perfect for special occasions.
-          </p>
-        ),
-      },
-      {
-        description: "Sweet Yogurt Drink",
-        title: "Mango Lassi",
-        src: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?q=80&w=800",
-        tags: ["veg", "beverage", "lunch", "dinner"],
-        varieties: [
-          { name: "Small", price: 80 },
-          { name: "Medium", price: 120 },
-          { name: "Large", price: 180 }
-        ],
-        nutrition: {
-          servingSize: "250ml",
-          calories: 165,
-          protein: 5.2,
-          carbs: 28.5,
-          fat: 3.8,
-          fiber: 1.2,
-          sodium: 125
-        },
-        content: () => (
-          <p>
-            **Mango Lassi** is a refreshing blend of ripe mangoes, yogurt, and
-            a touch of cardamom. <br /><br />
-            This creamy, sweet beverage is perfect for cooling down after spicy
-            meals and is beloved across India, especially in summer.
-          </p>
-        ),
-      },
-    ]
+    ],
   },
-  {
-    name: "Punjab Da Dhaba",
-    location: "Punjabi Bagh, New Delhi",
-    cuisine: "Authentic Punjabi",
-    foodCards: [
-      {
-        description: "Chickpea Curry Classic",
-        title: "Chole Bhature",
-        src: "https://images.unsplash.com/photo-1626074353765-517a681e40be?q=80&w=800",
-        tags: ["veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 150 },
-          { name: "Half", price: 260 },
-          { name: "Full", price: 480 }
-        ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 285,
-          protein: 8.5,
-          carbs: 38.2,
-          fat: 11.5,
-          fiber: 6.8,
-          sodium: 465
-        },
-        content: () => (
-          <p>
-            **Chole Bhature** is Punjab's most iconic breakfast and lunch dish,
-            featuring spicy chickpea curry with puffed bhature bread. <br /><br />
-            The tangy, aromatic chole paired with crispy bhature creates an
-            irresistible combination that's hearty and satisfying.
-          </p>
-        ),
-      },
-      {
-        description: "Mustard Greens Delight",
-        title: "Sarson Ka Saag",
-        src: "https://images.unsplash.com/photo-1589621316382-008455b857cd?q=80&w=800",
-        tags: ["veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 170 },
-          { name: "Half", price: 300 },
-          { name: "Full", price: 560 }
-        ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 135,
-          protein: 5.2,
-          carbs: 12.8,
-          fat: 7.5,
-          fiber: 4.5,
-          sodium: 325
-        },
-        content: () => (
-          <p>
-            **Sarson Ka Saag** is a traditional Punjabi dish made from mustard
-            greens, spinach, and other leafy vegetables. <br /><br />
-            Slow-cooked with spices and finished with butter, this nutritious
-            dish is classically served with makki di roti (corn flatbread).
-          </p>
-        ),
-      },
-      {
-        description: "Grilled Minced Meat",
-        title: "Seekh Kebab",
-        src: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=800",
-        tags: ["non-veg", "lunch", "dinner"],
-        varieties: [
-          { name: "Quarter", price: 240 },
-          { name: "Half", price: 430 },
-          { name: "Full", price: 820 }
-        ],
-        nutrition: {
-          servingSize: "100g",
-          calories: 245,
-          protein: 18.5,
-          carbs: 3.2,
-          fat: 18.2,
-          fiber: 0.8,
-          sodium: 425
-        },
-        content: () => (
-          <p>
-            **Seekh Kebab** consists of spiced minced meat molded onto skewers
-            and grilled in a tandoor until perfectly charred. <br /><br />
-            These succulent, smoky kebabs are aromatic with cumin, coriander,
-            and garam masala, making them a favorite appetizer or main course.
-          </p>
-        ),
-      },
-      {
-        description: "Corn Flatbread",
-        title: "Makki Di Roti",
-        src: "https://images.unsplash.com/photo-1593355799195-2f9b8c0c9e6c?q=80&w=800",
-        tags: ["veg", "bread", "lunch", "dinner"],
-        varieties: [
-          { name: "Single", price: 35 },
-          { name: "Pair", price: 60 },
-          { name: "Set of 4", price: 110 }
-        ],
-        nutrition: {
-          servingSize: "1 piece (70g)",
-          calories: 145,
-          protein: 3.5,
-          carbs: 28.5,
-          fat: 2.8,
-          fiber: 3.8,
-          sodium: 185
-        },
-        content: () => (
-          <p>
-            **Makki Di Roti** is a rustic flatbread made from cornmeal, traditionally
-            paired with Sarson Ka Saag. <br /><br />
-            This gluten-free bread has a distinctive texture and earthy flavor,
-            representing authentic Punjabi winter cuisine.
-          </p>
-        ),
-      },
-      {
-        description: "Traditional Buttermilk",
-        title: "Punjabi Lassi",
-        src: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?q=80&w=800",
-        tags: ["veg", "beverage", "lunch", "dinner"],
-        varieties: [
-          { name: "Small", price: 70 },
-          { name: "Medium", price: 110 },
-          { name: "Large", price: 160 }
-        ],
-        nutrition: {
-          servingSize: "250ml",
-          calories: 155,
-          protein: 6.5,
-          carbs: 22.5,
-          fat: 4.2,
-          fiber: 0,
-          sodium: 145
-        },
-        content: () => (
-          <p>
-            **Punjabi Lassi** is a thick, creamy yogurt drink, often sweetened
-            or salted, and topped with malai (cream). <br /><br />
-            This traditional beverage is refreshing, probiotic-rich, and perfect
-            for balancing spicy Punjabi meals.
-          </p>
-        ),
-      },
-    ]
-  }
 ];
 
-export default restaurants;
+export default agencies;
 
 export const tagImages: Record<string, string> = {
-  "veg": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "non-veg": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "breakfast": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "lunch": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "dinner": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-  "mild": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
-}
+  "paid ads": "https://images.unsplash.com/photo-1581093588401-0e4f5c72e4f0?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
+  "organic traffic": "https://images.unsplash.com/photo-1565372911251-1d99b1e4b86e?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
+  "social media": "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
+  "blog": "https://images.unsplash.com/photo-1612831455542-7b8eabe32dff?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
+  "email campaigns": "https://images.unsplash.com/photo-1581091012184-3f4d64f155e1?crop=entropy&cs=tinysrgb&fit=max&w=400&q=80",
+};
