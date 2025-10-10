@@ -77,9 +77,7 @@ export function MarketingMenu({ agencyName }: MarketingMenuProps) {
         <h1 className="text-3xl font-bold text-neutral-800 dark:text-neutral-200 mb-2">
           {agency.name}
         </h1>
-        <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-1">
-          📍 {agency.location}
-        </p>
+   
         <p className="text-md text-neutral-500 dark:text-neutral-500 mb-4">
           {agency.specialty}
         </p>
@@ -184,7 +182,6 @@ export function MarketingMenu({ agencyName }: MarketingMenuProps) {
               className="w-full max-w-[500px] bg-white dark:bg-neutral-900 rounded-3xl p-4"
             >
               <div className="mr-2 mt-2 flex justify-end cursor-pointer">
-                <CloseIcon />
               </div>
               <img
                 src={active.src}
@@ -195,7 +192,9 @@ export function MarketingMenu({ agencyName }: MarketingMenuProps) {
               <p className="text-neutral-600 dark:text-neutral-400 mb-4">
                 {active.description}
               </p>
-              <div className="mb-4">{active.details && active.details()}</div>
+              <div className="mb-4 ">{active.details && active.details()}</div>
+              <div className="mb-4 flex gap-4">
+
               <motion.a
                 href={`https://wa.me/${phone}?text=${encodeURIComponent(
                   `Hi, I am interested in your service: ${active.title}`
@@ -206,6 +205,14 @@ export function MarketingMenu({ agencyName }: MarketingMenuProps) {
               >
                 Contact Us
               </motion.a>
+              <motion.a
+                onClick={() => setActive(null)}
+                className="w-full inline-block px-4 py-2 rounded-full font-bold bg-red-500 hover:bg-red-600 text-white text-center"
+              >
+                Close
+              </motion.a>
+              </div>
+
             </motion.div>
           </div>
         )}

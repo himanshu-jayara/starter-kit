@@ -105,7 +105,7 @@ const TestimonialSlider = () => {
           </p>
 
 
-          <div className=" flex justify-between px-4 mx-[40%] md:mx-[34%] my-8 flex space-x-3 p-2  rounded-full shadow-xl bg-gray-100 dark:bg-gray-900">
+          <div className=" flex justify-between px-4 mx-[30%] md:mx-[34%] my-8 flex space-x-3 p-2  rounded-full shadow-xl bg-gray-100 dark:bg-gray-900">
             <NavButton direction="prev" onClick={prevTestimonial} />
             <NavButton direction="next" onClick={nextTestimonial} />
           </div>

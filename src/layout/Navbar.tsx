@@ -84,7 +84,7 @@ export function MainNavbar() {
             <DarkModeSwitch />
 
             <NavbarButton
-              onClick={() => handleNavigate("/menu")}
+              onClick={() => handleNavigate("/services")}
               variant="primary"
               className="w-full"
             >
