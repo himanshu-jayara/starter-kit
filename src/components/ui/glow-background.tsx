@@ -203,10 +203,11 @@ export function DottedGlowBackground({
 
     regenDots();
 
-    let last = performance.now();
-
+    
     const draw = (now: number) => {
       if (stopped) return;
+      // @ts-ignore
+      let last = performance.now();
       last = now;
       const { width, height } = container.getBoundingClientRect();
 
