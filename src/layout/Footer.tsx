@@ -1,9 +1,15 @@
 "use client";
 
 import { useNavigate } from "react-router-dom";
-import { IconBrandGithub, IconBrandLinkedin, IconBrandInstagram, IconMail, IconPhone } from "@tabler/icons-react";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandInstagram,
+  IconMail,
+  IconPhone,
+} from "@tabler/icons-react";
 import { motion } from "framer-motion";
-const phone=import.meta.env.VITE_OWNER_PHONE
+const phone = import.meta.env.VITE_OWNER_PHONE;
 
 const Footer = ({ companyName = "Vertex Nexus" }) => {
   const year = new Date().getFullYear();
@@ -34,7 +40,9 @@ const Footer = ({ companyName = "Vertex Nexus" }) => {
 
           {/* Description */}
           <p className="text-sm text-gray-300 leading-6">
-            {companyName} delivers cutting-edge software solutions to help you build and scale Web3 applications effortlessly. No Hassle. No complexity. Just seamless development.
+            {companyName} delivers cutting-edge software solutions to help you
+            build and scale Web3 applications effortlessly. No Hassle. No
+            complexity. Just seamless development.
           </p>
         </div>
 
@@ -63,8 +71,14 @@ const Footer = ({ companyName = "Vertex Nexus" }) => {
             <div className="flex space-x-4">
               {[
                 { Icon: IconBrandGithub, href: "https://github.com/skaya-org" },
-                { Icon: IconBrandLinkedin, href: "https://linkedin.com/company/skaya-org" },
-                { Icon: IconBrandInstagram, href: "https://instagram.com/skaya_org_" },
+                {
+                  Icon: IconBrandLinkedin,
+                  href: "https://linkedin.com/company/skaya-org",
+                },
+                {
+                  Icon: IconBrandInstagram,
+                  href: "https://instagram.com/skaya_org_",
+                },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
@@ -82,14 +96,21 @@ const Footer = ({ companyName = "Vertex Nexus" }) => {
       </div>
 
       {/* Bottom Section */}
-      <div className="container mx-auto mt-12 pt-6 border-t border-gray-700 text-center text-sm">
-        <p>© {year} {companyName}. All rights reserved.</p>
-        <p className="mt-1">
+      <div className="container mx-auto mt-12 pt-6 border-t border-gray-700 text-center text-sm relative z-10">
+        <p>
+          © {year} {companyName}. All rights reserved.
+        </p>
+        <div className="mt-1">
           Built with ❤️ by{" "}
-          <a href="https://skaya.org" target="_blank" rel="noopener noreferrer" className="hover:underline text-indigo-300">
+          <a
+            href="https://skaya.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-indigo-300 relative z-10 pointer-events-auto"
+          >
             SKAYA
           </a>
-        </p>
+        </div>
       </div>
     </footer>
   );

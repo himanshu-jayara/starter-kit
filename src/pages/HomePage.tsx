@@ -5,13 +5,14 @@ import TrackRecordSection from "../components/Cards/TrackRecord.tsx";
 import Testimonials from "../components/Cards/Testimonials.tsx";
 import ServicesGrid from "../components/Cards/ServiceCard.tsx";
 import FAQSection from "../components/Cards/FaqCard.tsx";
+import ContactSection from "../components/Cards/ContactLink.tsx";
+import DottedGlowBackground from "../components/ui/glow-background.tsx";
 
 function Menupage() {
   return (
     <div className="container mx-auto flex flex-col items-center justify-center text-center">
-      <div className="mt-24 mb-6">
-        {/* <DottedGlowBackground
-          className="w-full pointer-events-none mask-radial-to-90% mask-radial-at-center"
+        <DottedGlowBackground
+          className="w-full pointer-events-none mask-radial-to-75% mask-radial-at-center"
           opacity={1}
           gap={10}
           radius={1.6}
@@ -23,7 +24,8 @@ function Menupage() {
           speedMin={0.3}
           speedMax={1.6}
           speedScale={1}
-        /> */}
+        />
+      <div className="mt-24 mb-6">
         <TextGenerateEffectDemo />
         <HeroSection/>
       </div>
@@ -31,6 +33,7 @@ function Menupage() {
       <ServicesGrid/>
       <Testimonials/>
       <FAQSection/>
+      <ContactSection/>
       <div className="p-4 flex justify-center">
         {/* optional additional centered content */}
       </div>

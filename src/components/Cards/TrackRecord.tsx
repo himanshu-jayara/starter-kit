@@ -75,9 +75,9 @@ export default function TrackRecordSection() {
         </div>
 
         {/* Button */}
-        <button className="bg-indigo-700 dark:bg-indigo-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-800 dark:hover:bg-purple-600 transition-all duration-300 shadow-md">
+        {/* <button className="bg-indigo-700 dark:bg-indigo-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-800 dark:hover:bg-purple-600 transition-all duration-300 shadow-md">
           Learn More
-        </button>
+        </button> */}
       </motion.div>
     </section>
   );

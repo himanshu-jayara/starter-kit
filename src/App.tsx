@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<MenuPage />} />
-          <Route path="/about" element={<MenuPage />} />
+          {/* <Route path="/about" element={<MenuPage />} /> */}
 
           {/* catch-all redirect to home */}
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -15,9 +15,9 @@ export default defineConfig({
     },
 
     manifest: {
-      name: 'starter-kit',
-      short_name: 'starter-kit',
-      description: 'A starter kit for all restaurant',
+      name: 'Vertex Nexus',
+      short_name: 'Vertex',
+      description: 'custom software development, web application development, mobile app development, software solutions, enterprise software, software consulting, Nexus Vertex',
       theme_color: '#ffffff',
     },
 

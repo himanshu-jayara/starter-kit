@@ -20,7 +20,7 @@ export function MainNavbar() {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
-    { name: "About Us", path: "/about" },
+    // { name: "About Us", path: "/about" },
   ];
 
   const handleNavigate = (path: string) => {

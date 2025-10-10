@@ -233,7 +233,7 @@ export const NavbarLogo = () => {
   return (
     <a
       href="/"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 font-normal text-black"
     >
       <img
         src="/favicon.svg"
@@ -242,7 +242,7 @@ export const NavbarLogo = () => {
         height={40}
         className="rounded rounded-lg"
       />
-      <span className="font-medium text-black dark:text-white">Vertex Nexus</span>
+      <span className="font-large text-lg font-bold text-black dark:text-white">Vertex Nexus</span>
     </a>
   );
 };

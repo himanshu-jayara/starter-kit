@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import testimonial from "../../assets/testimonial.png"; // Replace with your own image
 
 // Sample testimonials
 const testimonials = [
@@ -79,7 +80,7 @@ const TestimonialSlider = () => {
           <AnimatePresence mode="wait">
             <motion.img
               key={currentIndex}
-              src="https://images.unsplash.com/photo-1549923746-c56758656722?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+              src={testimonial}
               alt="Two people laughing while working on laptops"
               className="w-full h-auto max-h-[500px] object-cover"
               variants={fadeLeftVariants}
@@ -103,7 +104,7 @@ const TestimonialSlider = () => {
           <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">
             Our Clients <span className="text-indigo-600 dark:text-indigo-400">Love Us.</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-lg mb-10">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300  mb-10">
             Here is what some of our amazing customers are saying about our marketing professionals. Their insights and dedication helped drive measurable success for our clients.
           </p>
 

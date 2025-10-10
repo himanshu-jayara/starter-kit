@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Individual FAQ Item Component - UPDATED
+// Individual FAQ Item Component
 const FAQItem = ({ question, answer, isOpen, toggleOpen }: any) => {
   return (
     <div className="border-b border-gray-200 dark:border-gray-700 py-4">
@@ -57,29 +57,29 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "Is lunch provided free of cost?",
+      question: "What services do you offer in digital marketing?",
       answer:
-        "Yes, complimentary lunch is provided for all guests staying at our hotels. Please check with the front desk for timings and menu options.",
+        "We provide a full suite of digital marketing services including SEO, social media management, PPC campaigns, email marketing, content marketing, and brand strategy.",
     },
     {
-      question: "Do you have 2 Bedroom suites?",
+      question: "How long does it take to see results?",
       answer:
-        "Absolutely! We offer various suite options, including spacious 2-bedroom suites perfect for families or groups. Availability may vary by location.",
+        "Results vary depending on the service. For SEO, noticeable results typically appear within 3-6 months. Paid campaigns can generate leads almost immediately after launch.",
     },
     {
-      question: "Are Wi-Fi costs included in the price?",
+      question: "Do you manage social media accounts?",
       answer:
-        "High-speed Wi-Fi access is included free of charge in all our rooms and public areas for the duration of your stay.",
+        "Yes! We create, schedule, and manage posts across all major platforms like Instagram, Facebook, LinkedIn, and Twitter to build engagement and grow your audience.",
     },
     {
-      question: "Where can I reach you for support?",
+      question: "Can you help with website design and optimization?",
       answer:
-        "Our customer support team is available 24/7. You can reach us via phone at (123) 456-7890, email at support@ourhotels.com, or through the contact form on our website.",
+        "Absolutely. We provide website design, development, and optimization services to ensure your site is user-friendly, mobile-responsive, and SEO-friendly.",
     },
     {
-      question: "Do you offer airport shuttle services?",
+      question: "How do you measure campaign success?",
       answer:
-        "Some of our locations provide complimentary airport shuttle services. Please check the specific hotel's amenities page or contact them directly for details.",
+        "We track key performance metrics such as website traffic, lead generation, conversion rates, social engagement, and ROI. Regular reports are shared with you for transparency.",
     },
   ];
 
@@ -100,20 +100,13 @@ const FAQSection = () => {
               viewport={{ once: true, amount: 0.3 }}
               className="w-full max-w-lg lg:max-w-none mb-10 lg:mb-0"
             >
-              {/* This is a placeholder for your illustration */}
-              {/* You might replace this with an actual SVG or image component */}
               <div className="w-full flex justify-center lg:justify-start">
                 <div className="relative w-full max-w-[400px] aspect-w-16 aspect-h-9 sm:aspect-h-7 lg:aspect-h-1 flex items-end">
-                  {/* Laptop base */}
                   <div className="absolute bottom-0 w-full h-[60%] bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg"></div>
-                  {/* Screen part */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-[70%] bg-white dark:bg-gray-700 rounded-t-lg shadow-md flex items-center justify-center pt-8">
-                    {/* Simplified person illustration */}
                     <div className="w-28 h-28 rounded-full bg-indigo-500 dark:bg-indigo-400"></div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-indigo-700 dark:bg-indigo-600 border-4 border-white dark:border-gray-900"></div>
-                    <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-8 w-16 bg-gray-800 dark:bg-gray-200 rounded-full"></div>{" "}
-                    {/* Hair */}
-                    {/* Speech bubble */}
+                    <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-8 w-16 bg-gray-800 dark:bg-gray-200 rounded-full"></div>
                     <div className="absolute top-1/4 right-0 transform translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-600 p-3 rounded-lg shadow-lg after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0 after:border-t-[10px] after:border-t-white dark:after:border-t-gray-600 after:border-r-[10px] after:border-r-transparent after:-translate-x-full after:translate-y-full">
                       <div className="h-2 w-16 bg-gray-300 dark:bg-gray-500 rounded mb-1"></div>
                       <div className="h-2 w-12 bg-gray-300 dark:bg-gray-500 rounded"></div>
@@ -141,7 +134,7 @@ const FAQSection = () => {
             >
               Do you have{" "}
               <span className="text-indigo-600 dark:text-indigo-400">
-                Questions?
+                Questions about Digital Marketing?
               </span>
             </motion.h2>
             <motion.p
@@ -151,9 +144,7 @@ const FAQSection = () => {
               viewport={{ once: true, amount: 0.3 }}
               className="text-lg text-gray-600 dark:text-gray-300 max-w-md mx-auto lg:mx-0"
             >
-              Here are some frequently asked questions about our hotels from our
-              loving customers. Should you have any other questions, feel free
-              to reach out via the contact form below.
+              Here are some frequently asked questions about digital marketing services. If you have any other queries, feel free to reach out to our team.
             </motion.p>
           </div>
 
