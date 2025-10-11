@@ -366,7 +366,7 @@ export const restaurants = [
         description: "Street Food Icon",
         title: "Pav Bhaji",
         src: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074",
-        tags: ["veg", "lunch", "dinner"],
+        tags: ["veg", "breakfast", "dinner","mild"],
         varieties: [
           { name: "Quarter", price: 120 },
           { name: "Half", price: 200 },
@@ -395,7 +395,7 @@ export const restaurants = [
         description: "Chickpea Curry Classic",
         title: "Chole Bhature",
         src: choleBhature,
-        tags: ["veg", "lunch", "dinner"],
+        tags: ["veg", "breakfast", "dinner"],
         varieties: [
           { name: "Quarter", price: 150 },
           { name: "Half", price: 260 },
@@ -424,7 +424,7 @@ export const restaurants = [
         description: "Traditional Buttermilk",
         title: "Punjabi Lassi",
         src: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?q=80&w=800",
-        tags: ["veg", "beverage", "lunch", "dinner"],
+        tags: ["veg", "beverage", "breakfast", "mild"],
         varieties: [
           { name: "Small", price: 70 },
           { name: "Medium", price: 110 },
@@ -614,7 +614,7 @@ export const restaurants = [
         description: "Chickpea Curry Classic",
         title: "Chole Bhature",
         src: "https://images.unsplash.com/photo-1626074353765-517a681e40be?q=80&w=800",
-        tags: ["veg", "lunch", "dinner"],
+        tags: ["veg", "breakfast"],
         varieties: [
           { name: "Quarter", price: 150 },
           { name: "Half", price: 260 },
