@@ -203,6 +203,7 @@ export function DottedGlowBackground({
 
     regenDots();
 
+      // @ts-ignore
     let last = performance.now();
 
     const draw = (now: number) => {
