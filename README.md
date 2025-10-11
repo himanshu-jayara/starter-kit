@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+npm run build
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# When new
 
-Currently, two official plugins are available:
+## 1️⃣ Create the directory for your site
+sudo mkdir -p /var/www/hotel.skaya.org
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 2️⃣ Give correct ownership to Nginx and you (ubuntu)
+sudo chown -R ubuntu:www-data /var/www/hotel.skaya.org
+sudo chmod -R 755 /var/www/hotel.skaya.org
 
-## Expanding the ESLint configuration
+## 3️⃣ Now copy your built files
+sudo cp -r dist/* /var/www/hotel.skaya.org/
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# add nginx config
+run
+```
+sudo nano /etc/nginx/sites-available/hotel.skaya.org
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+insert
 ```
+server {
+    listen 80;
+    server_name hotel.skaya.org;
+
+    root /var/www/hotel.skaya.org;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    access_log /var/log/nginx/hotel_access.log;
+    error_log /var/log/nginx/hotel_error.log;
+}
+
+```
+## restart nginx
+sudo ln -s /etc/nginx/sites-available/hotel.skaya.org /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+
+
+# When Old
+
+## Copy build
+sudo cp -r dist/* /var/www/hotel.skaya.org/
+
+## Restart nginx
+
+sudo nginx -t
+sudo systemctl reload nginx
