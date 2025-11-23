@@ -88,8 +88,8 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="bg-white my-36 dark:bg-gray-900 py-16 md:py-24 font-sans transition-colors duration-500">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-[88vw]">
+    <section className="bg my-36  py-16 md:py-24 font-sans transition-colors duration-500">
+      <div className="container mx-auto  max-w-7xl ">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12">
           {/* Left Side: Illustration and Text */}
           <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">

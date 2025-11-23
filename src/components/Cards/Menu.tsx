@@ -51,15 +51,6 @@ export function MarketingMenu({ agencyName }: MarketingMenuProps) {
   return (
     <div className="relative">
       {/* Agency Header */}
-      <div className="max-w-4xl mx-auto w-full px-4 pt-4 pb-2 text-center">
-        <h1 className="text-3xl font-bold text-neutral-800 dark:text-neutral-200 mb-2">
-          {agency.name}
-        </h1>
-   
-        <p className="text-md text-neutral-500 dark:text-neutral-500 mb-4">
-          {agency.specialty}
-        </p>
-      </div>
 
       {/* Search Bar */}
       <div className="max-w-4xl mx-auto w-full px-4 pb-2">
@@ -73,7 +64,6 @@ export function MarketingMenu({ agencyName }: MarketingMenuProps) {
           />
         </div>
       </div>
-
       {/* Tags */}
       <div className="w-[90vw] overflow-x-auto py-2">
         <div className="flex gap-4 px-4 flex-nowrap justify-center min-w-max">

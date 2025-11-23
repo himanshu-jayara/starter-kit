@@ -41,7 +41,7 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-8 md:py-12 px-4 md:px-8 text-center mx-auto backdrop-blur-xl rounded-2xl bg-white/10 dark:bg-black/40"
+      className="py-8 md:py-12 px-4 md:px-8 text-center mx-auto max-w-3xl rounded-2xl "
     >
       <h2 className="text-[clamp(1.5rem,6vw,2.8rem)] font-black mb-6 text-indigo-600 dark:text-indigo-400">
         Contact Us 📞
@@ -53,7 +53,7 @@ const ContactSection = () => {
 
       <form
         onSubmit={submitForm}
-        className="flex w-full flex-col gap-5 text-left p-6 rounded-xl  border border-gray-300/30 dark:border-gray-700/50 bg-white/5 dark:bg-black/20"
+        className="flex w-full flex-col gap-5 text-left p-6 rounded-xl  border border-gray-300/30 dark:border-gray-700/50 "
       >
         {/* Name */}
         <div className="flex flex-col">

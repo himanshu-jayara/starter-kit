@@ -1,34 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
-import videoSrc from "../../assets/home.webp";
+import videoSrc from "../../assets/home.mp4";
 import { useNavigate } from "react-router-dom";
 
-const phone=import.meta.env.VITE_OWNER_PHONE
+const phone = import.meta.env.VITE_OWNER_PHONE;
+
 export default function HeroSection() {
   const navigate = useNavigate();
   return (
     <section
-      className="
+      className="container
         flex flex-col md:flex-row items-center justify-between 
         transition-colors duration-300 
         space-y-10 md:space-y-0 md:gap-32 lg:gap-44 xl:gap-56
-        min-h-[80vh]
+        min-h-[60vh]
       "
     >
       {/* Left Content */}
-      <div className="flex flex-col py-36 space-y-6 md:w-1/2">
+      <div className="flex flex-col py-26 space-y-6 md:w-1/2 ">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-snug">
-          We are a{" "}
+          Vertex{" "} Nexus
           <span className="block">
-            Design{" "}
-            <span className="text-indigo-600 dark:text-indigo-400">and</span>
+            <span className="text-indigo-600 dark:text-indigo-400">Marketing</span>
           </span>
           <span className="block text-indigo-600 dark:text-indigo-400">
-            Branding Agency
+            Solution
           </span>
         </h1>
-        <p className="text-gray-600 dark:text-gray-300 max-w-md">
+        <p className="text-gray-600 dark:text-gray-300 ">
           At least, not exclusively. Reduced recruiting costs, more efficient
           and effective communication, and, most importantly.
         </p>
@@ -58,13 +58,22 @@ export default function HeroSection() {
         transition={{ duration: 1 }}
         className="
           md:w-1/2 flex items-center justify-center 
-          bg-indigo-50 dark:bg-gray-800 
-          rounded-tl-[100px] md:rounded-tl-[150px] 
-          overflow-hidden h-full py-20 md:py-0
+          overflow-hidden h-full py-2 md:py-0
         "
       >
-      
-        <img src={videoSrc} />
+        <video
+          src={videoSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-label="Promotional background video"
+          className="w-full max-w-[720px] h-auto rounded-lg object-cover shadow-lg pointer-events-none"
+        >
+          {/* Fallback content for older browsers */}
+          Your browser does not support the video tag.
+        </video>
       </motion.div>
     </section>
   );
