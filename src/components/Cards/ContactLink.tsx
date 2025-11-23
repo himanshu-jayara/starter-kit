@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { SparklesCore } from "../ui/sparkles";
+import { useTheme } from "./ServiceCard";
 
 const phone = import.meta.env.VITE_OWNER_PHONE; // should be like '919876543210'
 
@@ -25,7 +27,8 @@ const ContactSection = () => {
     e.preventDefault();
     if (contactForm.name && contactForm.message) {
       let messageBody = `New inquiry:\n\nName: ${contactForm.name}`;
-      if (contactForm.subject) messageBody += `\nSubject: ${contactForm.subject}`;
+      if (contactForm.subject)
+        messageBody += `\nSubject: ${contactForm.subject}`;
       messageBody += `\nMessage: ${contactForm.message}`;
 
       const encodedMessage = encodeURIComponent(messageBody);
@@ -37,18 +40,47 @@ const ContactSection = () => {
   };
 
   const whatsappLink = `https://wa.me/${phone}`;
+  const { theme, isMounted } = useTheme();
+
+  const particleColor = theme === "dark" ? "#FFFFFF" : "#0A0A0A"; // White for dark mode, dark gray/black for light mode
+
+  const containerBgClass = theme === "dark" ? "bg-black" : "bg-white";
 
   return (
     <section
       id="contact"
       className="py-8 md:py-12 px-4 md:px-8 text-center mx-auto max-w-3xl rounded-2xl "
     >
-      <h2 className="text-[clamp(1.5rem,6vw,2.8rem)] font-black mb-6 text-indigo-600 dark:text-indigo-400">
-        Contact Us 📞
-      </h2>
+      <div
+        className={` w-full py-4 ${containerBgClass} flex flex-col items-center justify-center overflow-hidden rounded-md `}
+      >
+        <h2 className="text-[clamp(1.5rem,6vw,2.8rem)] font-black mb-6 text-indigo-600 dark:text-indigo-400">
+          Contact Us 📞
+        </h2>
+        <div className="w-[80vw] h-30 relative">
+          {/* Gradients */}
+          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
+          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
+          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
 
+          {/* Core component */}
+          {isMounted && (
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1}
+              particleDensity={1200}
+              className="w-[full] h-full"
+              // Passed the theme-responsive color here
+              particleColor={particleColor}
+            />
+          )}
+        </div>
+      </div>
       <p className="text-[clamp(0.85rem,3.5vw,1.1rem)] mb-6 leading-relaxed px-2 text-gray-800 dark:text-gray-200">
-        Reach out to us directly on WhatsApp or fill out the form below. We'll get back to you soon!
+        Reach out to us directly on WhatsApp or fill out the form below. We'll
+        get back to you soon!
       </p>
 
       <form
@@ -57,31 +89,40 @@ const ContactSection = () => {
       >
         {/* Name */}
         <div className="flex flex-col">
-          <label htmlFor="name" className="font-semibold mb-1 text-indigo-600 dark:text-indigo-400">
+          <label
+            htmlFor="name"
+            className="font-semibold mb-1 text-indigo-600 dark:text-indigo-400"
+          >
             Your Name
           </label>
           <input
             type="text"
             id="name"
             value={contactForm.name}
-            onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+            onChange={(e) =>
+              setContactForm({ ...contactForm, name: e.target.value })
+            }
             required
             placeholder="Enter your full name"
             className="rounded-lg p-2 border border-gray-300/30 dark:border-gray-700/50 bg-white/10 dark:bg-black/20 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
 
-
         {/* Subject */}
         <div className="flex flex-col">
-          <label htmlFor="subject" className="font-semibold mb-1 text-indigo-600 dark:text-indigo-400">
+          <label
+            htmlFor="subject"
+            className="font-semibold mb-1 text-indigo-600 dark:text-indigo-400"
+          >
             Subject
           </label>
           <input
             type="text"
             id="subject"
             value={contactForm.subject}
-            onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
+            onChange={(e) =>
+              setContactForm({ ...contactForm, subject: e.target.value })
+            }
             placeholder="Brief subject"
             className="rounded-lg p-2 border border-gray-300/30 dark:border-gray-700/50 bg-white/10 dark:bg-black/20 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
@@ -89,13 +130,18 @@ const ContactSection = () => {
 
         {/* Message */}
         <div className="flex flex-col">
-          <label htmlFor="message" className="font-semibold mb-1 text-indigo-600 dark:text-indigo-400">
+          <label
+            htmlFor="message"
+            className="font-semibold mb-1 text-indigo-600 dark:text-indigo-400"
+          >
             Your Message
           </label>
           <textarea
             id="message"
             value={contactForm.message}
-            onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+            onChange={(e) =>
+              setContactForm({ ...contactForm, message: e.target.value })
+            }
             rows={5}
             required
             placeholder="Tell us about your project..."

@@ -1,41 +1,54 @@
 import { motion } from "framer-motion";
+import { SparklesCore } from "../ui/sparkles";
+import { useTheme } from "./ServiceCard";
 
-// Testimonials
+// Auto-import all images from team folder
+export const loadAvatars = () => {
+  const images = import.meta.glob("../../assets/team/*.{png,jpg,jpeg}", {
+    eager: true,
+  });
+
+  return Object.values(images).map((img: any) => img.default);
+};
+
+const localAvatars = loadAvatars();
+
+// Testimonials with local avatars
 const testimonials = [
   {
     name: "Charlotte Hale",
     title: "CEO, Luminex Dynamics",
     quote:
-      "Partnering with this team has been a turning point for our company. Their clarity, precision, and ability to solve complex problems exceeded every expectation. We saw measurable improvements within weeks.",
-    avatarUrl: "https://placehold.co/150x150/50009c/ffffff?text=CH",
+      "Partnering with this team has been a turning point for our company...",
+    avatarUrl: localAvatars[0],
   },
   {
     name: "Marcus Chen",
     title: "Head of Product, Nebula Corp",
     quote:
-      "Working with this team transformed our quarterly performance. Their strategic insights and rapid execution were key to achieving a 40% growth in a single quarter. Absolutely recommend their expertise.",
-    avatarUrl: "https://placehold.co/150x150/007bff/ffffff?text=MC",
+      "Working with this team transformed our quarterly performance...",
+    avatarUrl: localAvatars[1],
   },
   {
     name: "Sarah Rodriguez",
     title: "Founder, EcoBloom",
     quote:
-      "The customer service and attention to detail were exceptional. They genuinely care about the success of their clients, and it shows in the quality of their work.",
-    avatarUrl: "https://placehold.co/150x150/ff4500/ffffff?text=SR",
+      "The customer service and attention to detail were exceptional...",
+    avatarUrl: localAvatars[2],
   },
   {
     name: "David Kumar",
     title: "CTO, Horizon Labs",
     quote:
-      "Their technical expertise is matched only by their communication. Every milestone delivered ahead of schedule with total transparency.",
-    avatarUrl: "https://placehold.co/150x150/0a8754/ffffff?text=DK",
+      "Their technical expertise is matched only by their communication...",
+    avatarUrl: localAvatars[3],
   },
   {
     name: "Elena Moretti",
     title: "COO, Aurora Atelier",
     quote:
-      "They understood our brand instantly. The final results were polished, modern, and perfectly aligned with our vision.",
-    avatarUrl: "https://placehold.co/150x150/9c0050/ffffff?text=EM",
+      "They understood our brand instantly...",
+    avatarUrl: localAvatars[4],
   },
 ];
 
@@ -48,6 +61,7 @@ const MarqueeItem = ({ testimonial }: any) => (
     <p className="text-gray-700 dark:text-gray-300 italic mb-6 leading-relaxed whitespace-normal break-words">
       "{testimonial.quote}"
     </p>
+
     <div className="flex items-center mt-auto">
       <img
         className="w-12 h-12 rounded-full object-cover mr-4 ring-2 ring-indigo-500/30"
@@ -69,6 +83,8 @@ const MarqueeItem = ({ testimonial }: any) => (
 const InfiniteTestimonialMarquee = () => {
   const duplicated = [...testimonials, ...testimonials];
   const MARQUEE_SPEED = 40;
+  const { theme, isMounted } = useTheme();
+  const particleColor = theme === "dark" ? "#FFFFFF" : "#0A0A0A";
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -82,16 +98,29 @@ const InfiniteTestimonialMarquee = () => {
         </p>
       </div>
 
-      {/* Fade Gradient Left */}
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-gray-50 dark:from-gray-900 to-transparent z-10" />
-      
-      {/* Fade Gradient Right */}
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-gray-50 dark:from-gray-900 to-transparent z-10" />
+      <div className="w-[100vw] h-50 relative">
+        {isMounted && (
+          <SparklesCore
+            background="transparent"
+            minSize={0.4}
+            maxSize={1}
+            particleDensity={1200}
+            className="w-full h-full"
+            particleColor={particleColor}
+          />
+        )}
+      </div>
 
-      {/* Marquee */}
-      <div className="overflow-hidden">
+      {/* Left Fade */}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-gray-50 dark:from-gray-900 to-transparent z-10" />
+
+      {/* Right Fade */}
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-gray-50 dark:from-gray-900 to-transparent z-10" />
+
+      {/* Scrollable + Marquee */}
+      <div className="overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
         <motion.div
-          className="flex whitespace-nowrap gap-4"
+          className="flex whitespace-nowrap gap-4 px-4 py-4"
           animate={{
             x: ["0%", "-50%"],
           }}
@@ -105,6 +134,19 @@ const InfiniteTestimonialMarquee = () => {
             <MarqueeItem key={i} testimonial={t} />
           ))}
         </motion.div>
+      </div>
+
+      <div className="w-[100vw] h-50 relative">
+        {isMounted && (
+          <SparklesCore
+            background="transparent"
+            minSize={0.4}
+            maxSize={1}
+            particleDensity={1200}
+            className="w-full h-full"
+            particleColor={particleColor}
+          />
+        )}
       </div>
     </section>
   );

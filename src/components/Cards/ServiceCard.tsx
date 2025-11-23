@@ -5,7 +5,7 @@ import { SparklesCore } from "../ui/sparkles";
 import { useEffect, useState } from "react";
 
 // Placeholder useTheme hook
-const useTheme = () => {
+export const useTheme = () => {
   const [theme, setTheme] = useState("light"); // Default to light
 
   useEffect(() => {
@@ -40,30 +40,18 @@ const useTheme = () => {
 const ServicesGrid = () => {
   const { theme, isMounted } = useTheme();
 
-  // Set particle color based on theme
-  // For dark mode (black background), use white particles (#FFFFFF)
-  // For light mode (non-black background, if you change it), use a darker color, e.g., a light gray or indigo
-  // Here, the background of the sparkes container is BG-BLACK, so white particles are best.
-  // We'll set the particle color to contrast the *surrounding* UI in case the sparks overflow.
-  // In the current setup, the sparks are inside a `bg-black` div, so white is always best for contrast.
-  // Let's make the color change to show how to use the theme.
 
   const particleColor = theme === "dark" ? "#FFFFFF" : "#0A0A0A"; // White for dark mode, dark gray/black for light mode
 
-  // Since the sparkles container background is explicitly black: `bg-black`,
-  // for the particles to be visible, they should be white, regardless of the overall theme.
-  // To make it truly theme-responsive, we must also change the container's background color
-  // and the mask color, which I'll adjust now.
 
   const containerBgClass = theme === "dark" ? "bg-black" : "bg-white";
-  const maskColorClass = theme === "dark" ? "bg-black" : "bg-white";
 
   return (
     <section className="py-6 font-sans transition-colors duration-500">
       <div className="">
         {/* Header */}
         <div
-          className={` w-full py-10 ${containerBgClass} flex flex-col items-center justify-center overflow-hidden rounded-md `}
+          className={` w-full py-4 ${containerBgClass} flex flex-col items-center justify-center overflow-hidden rounded-md `}
         >
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
             Our Professional{" "}
@@ -71,7 +59,7 @@ const ServicesGrid = () => {
               Services
             </span>
           </h2>
-          <div className="w-[60vw] h-50 relative">
+          <div className="w-[80vw] h-30 relative">
             {/* Gradients */}
             <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
             <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
@@ -91,10 +79,7 @@ const ServicesGrid = () => {
               />
             )}
 
-            {/* Radial Gradient to prevent sharp edges */}
-            <div
-              className={`absolute inset-0 w-full h-full ${maskColorClass} [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]`}
-            ></div>
+       
           </div>
         </div>
           <Menupage />
